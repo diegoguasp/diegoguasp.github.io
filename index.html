@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diego Guasp | Music Producer & Legal Advisor</title>
+    <style>
+        :root {
+            --primary: #6c41ec;
+            --secondary: #4fc3f7;
+            --dark: #121212;
+            --light: #f8f9fa;
+            --gray: #2d2d2d;
+            --success: #4caf50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            padding: 30px 0;
+            border-bottom: 1px solid var(--gray);
+            margin-bottom: 40px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            margin-bottom: 60px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(108, 65, 236, 0.2);
+        }
+        
+        .section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .section-title {
+            font-size: 32px;
+            margin-bottom: 40px;
+            color: var(--secondary);
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .service-card {
+            background-color: var(--gray);
+            padding: 30px;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .portfolio-item {
+            background-color: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .portfolio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+        }
+        
+        .audio-player {
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .player-controls button {
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .progress-container {
+            flex-grow: 1;
+            height: 5px;
+            background-color: #444;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: var(--primary);
+            border-radius: 5px;
+            width: 0%;
+        }
+        
+        .time {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--gray);
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: var(--light);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #aaa;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">DG</div>
+                <div class="nav-links">
+                    <a href="#services">Services</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </header>
+        
+        <section class="hero">
+            <h1>Diego Guasp</h1>
+            <p>Music Producer & Legal Advisor | Blending creative production with industry expertise</p>
+            <a href="#contact" class="btn">Get In Touch</a>
+        </section>
+        
+        <section id="services" class="section">
+            <h2 class="section-title">Services</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>Music Production</h3>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5fb0f70b-26c9-4ad1-a10c-cbe5a8342d10.png" alt="Professional music studio with mixing console, monitors, and acoustic treatment" />
+                    <p>Full-service music production including recording, mixing, mastering, and arrangement. Specializing in hip-hop, electronic, and pop genres.</p>
+                    <ul>
+                        <li>Beat production</li>
+                        <li>Vocal recording</li>
+                        <li>Mixing & mastering</li>
+                        <li>Sound design</li>
+                    </ul>
+                </div>
+                <div class="service-card">
+                    <h3>Legal Advisory</h3>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/caccce48-aa95-4034-8af3-e89a7a5de028.png" alt="Attorney reviewing legal documents in a modern office setting" />
+                    <p>Music industry legal services to protect your creative work and business interests.</p>
+                    <ul>
+                        <li>Contract review & negotiation</li>
+                        <li>Copyright registration</li>
+                        <li>Sample clearance</li>
+                        <li>Licensing agreements</li>
+                        <li>Trademark protection</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <section id="portfolio" class="section">
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio">
+                <div class="portfolio-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f52fffe9-c092-4984-8377-21517e11a6ca.png" alt="Album cover artwork for a hip-hop release featuring urban cityscape at night" />
+                    <div class="portfolio-overlay">
+                        <h3>Urban Beats Vol. 3</h3>
+                        <p>Album production for emerging hip-hop artist</p>
+                        <div class="audio-player">
+                            <audio id="track1" src=""></audio>
+                            <div class="player-controls">
+                                <button id="playBtn1">▶</button>
+                                <div class="progress-container">
+                                    <div class="progress" id="progress1"></div>
+                                </div>
+                                <div class="time" id="time1">0:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3196cd00-e515-45d9-94fd-b67e6199ebe6.png" alt="Electronic music festival stage with light show and crowd" />
+                    <div class="portfolio-overlay">
+                        <h3>Festival Anthems 2023</h3>
+                        <p>Co-production for major festival hit</p>
+                        <div class="audio-player">
+                            <audio id="track2" src=""></audio>
+                            <div class="player-controls">
+                                <button id="playBtn2">▶</button>
+                                <div class="progress-container">
+                                    <div class="progress" id="progress2"></div>
+                                </div>
+                                <div class="time" id="time2">0:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e481c936-b364-459a-9726-3c31259562a1.png" alt="Legal documents and contracts on a wooden desk with gavel and scales of justice" />
+                    <div class="portfolio-overlay">
+                        <h3>Sample Clearance Case</h3>
+                        <p>Successfully negotiated sample clearance for platinum record</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/33e981e5-6984-4dd6-b25c-63cb2ffd9793.png" alt="Recording studio vocal booth with singer wearing headphones" />
+                    <div class="portfolio-overlay">
+                        <h3>Vocal Production</h3>
+                        <p>Artist vocal coaching and production</p>
+                        <div class="audio-player">
+                            <audio id="track3" src=""></audio>
+                            <div class="player-controls">
+                                <button id="playBtn3">▶</button>
+                                <div class="progress-container">
+                                    <div class="progress" id="progress3"></div>
+                                </div>
+                                <div class="time" id="time3">0:00</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="about" class="section">
+            <h2 class="section-title">About Me</h2>
+            <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
+                <div style="flex: 1; min-width: 300px;">
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/631f9062-d753-4b2a-8af0-4acaec29274d.png" alt="Professional headshot of music producer in studio wearing headphones with modern urban background" style="width: 100%; border-radius: 10px;" />
+                </div>
+                <div style="flex: 1; min-width: 300px;">
+                    <p>With over 10 years in the music industry, I bring a unique combination of technical production skills and legal expertise to help artists navigate both the creative and business sides of music.</p>
+                    <p>After graduating from Berklee College of Music and earning my law degree from UCLA, I've worked with Grammy-winning artists and independent musicians alike, always with the same commitment to artistic excellence and fair business practices.</p>
+                    <p>My mission is to empower artists with both killer beats and the legal knowledge to protect their work.</p>
+                    <div style="margin-top: 30px;">
+                        <h3 style="color: var(--primary); margin-bottom: 15px;">Clients & Collaborations</h3>
+                        <ul style="columns: 2; list-style-position: inside;">
+                            <li>Sony Music</li>
+                            <li>Atlantic Records</li>
+                            <li>Universal Publishing</li>
+                            <li>Independent Artists</li>
+                            <li>Film & TV Producers</li>
+                            <li>Advertising Agencies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="mentoring" class="section">
+            <h2 class="section-title">Legal Mentoring</h2>
+            <div class="services">
+                <div class="service-card">
+                    <h3>1-on-1 Legal Consultation</h3>
+                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2fc32df3-f1ce-443b-81b8-025c873cc404.png" alt="Lawyer discussing contracts with client" />
+                    <p>Book private mentoring sessions to get personalized advice on your music legal matters.</p>
+                    <ul>
+                        <li>Contract review</li>
+                        <li>Copyright guidance</li>
+                        <li>Licensing advice</li>
+                        <li>Business strategy</li>
+                    </ul>
+                    <a href="#contact" class="btn" style="margin-top:20px;">Book a Session</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service">
+                            <option value="">Select a service</option>
+                            <option value="production">Music Production</option>
+                            <option value="legal">Legal Advisory</option>
+                            <option value="mentoring">Legal Mentoring Session</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© 2023 Diego Guasp. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Audio player functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize players
+            const players = [
+                { id: 1, audio: document.getElementById('track1'), playBtn: document.getElementById('playBtn1'), progress: document.getElementById('progress1'), time: document.getElementById('time1') },
+                { id: 2, audio: document.getElementById('track2'), playBtn: document.getElementById('playBtn2'), progress: document.getElementById('progress2'), time: document.getElementById('time2') },
+                { id: 3, audio: document.getElementById('track3'), playBtn: document.getElementById('playBtn3'), progress: document.getElementById('progress3'), time: document.getElementById('time3') }
+            ];
+            
+            // Set up each player
+            players.forEach(player => {
+                if (player.audio) {
+                    // Play/pause toggle
+                    player.playBtn.addEventListener('click', function() {
+                        if (player.audio.paused) {
+                            // Pause all other players first
+                            players.forEach(p => {
+                                if (p.id !== player.id && !p.audio.paused) {
+                                    p.audio.pause();
+                                    p.playBtn.textContent = '▶';
+                                }
+                            });
+                            
+                            player.audio.play();
+                            player.playBtn.textContent = '❚❚';
+                        } else {
+                            player.audio.pause();
+                            player.playBtn.textContent = '▶';
+                        }
+                    });
+                    
+                    // Update progress bar
+                    player.audio.addEventListener('timeupdate', function() {
+                        const percent = (player.audio.currentTime / player.audio.duration) * 100;
+                        player.progress.style.width = `${percent}%`;
+                        
+                        // Update time display
+                        const minutes = Math.floor(player.audio.currentTime / 60);
+                        const seconds = Math.floor(player.audio.currentTime % 60).toString().padStart(2, '0');
+                        player.time.textContent = `${minutes}:${seconds}`;
+                    });
+                    
+                    // Click on progress bar to seek
+                    const progressContainer = player.progress.parentElement;
+                    progressContainer.addEventListener('click', function(e) {
+                        const width = this.offsetWidth;
+                        const clickX = e.offsetX;
+                        const duration = player.audio.duration;
+                        player.audio.currentTime = (clickX / width) * duration;
+                    });
+                    
+                    // Reset when ended
+                    player.audio.addEventListener('ended', function() {
+                        player.playBtn.textContent = '▶';
+                        player.progress.style.width = '0%';
+                        player.time.textContent = '0:00';
+                    });
+                }
+            });
+            
+            // Form submission
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const service = document.getElementById('service').value;
+                    const message = document.getElementById('message').value;
+                    
+                    // Here you would normally send this data to a server
+                    console.log('Form submitted:', { name, email, service, message });
+                    
+                    // Show success message (in a real app, you'd have proper feedback)
+                    alert('Thank you for your message! I will get back to you soon.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
