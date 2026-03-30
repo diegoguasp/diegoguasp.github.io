@@ -1,752 +1,743 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diego Guasp | Productor Musical & Asesor Legal Musical</title>
-    <style>
-        :root {
-            --primary: #6c41ec;
-            --secondary: #4fc3f7;
-            --dark: #121212;
-            --light: #f8f9fa;
-            --gray: #2d2d2d;
-            --success: #4caf50;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', sans-serif;
-        }
-        
-        body {
-            background-color: var(--dark);
-            color: var(--light);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            padding: 30px 0;
-            border-bottom: 1px solid var(--gray);
-            margin-bottom: 40px;
-        }
-        
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--secondary);
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            color: var(--light);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .container {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 18px;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diego Guasp — Productor Musical & Asesor Legal Musical</title>
+<meta name="description" content="Diego Guasp — Productor musical, ingeniero y asesor legal musical.">
+<meta property="og:title" content="Diego Guasp — Productor Musical & Asesor Legal Musical">
+<meta property="og:description" content="Mi musica suena como una pelicula.">
+<meta property="og:url" content="https://diegoguasp.github.io">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
 
-        header {
-            padding: 18px 0;
-            border-bottom: none;
-            margin-bottom: 18px;
-        }
+:root {
+  --bg:      #07090F;
+  --bg2:     #0C0E17;
+  --bg3:     #11141F;
+  --border:  rgba(255,255,255,0.07);
+  --text:    #E2E4EE;
+  --muted:   #525672;
+  --subtle:  #8A8FAD;
+  --blue:    #4F7EFF;
+  --blue2:   #7BA3FF;
+  --blue3:   rgba(79,126,255,0.08);
+  --cream:   #E8ECFF;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 10px;
-        }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  cursor: crosshair;
+}
 
-        .logo {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--secondary);
-        }
+/* ─── NAV ────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 3rem;
+  border-bottom: 1px solid transparent;
+  transition: background 0.4s, border-color 0.4s, padding 0.3s;
+}
+nav.scrolled {
+  background: rgba(7,9,15,0.94);
+  backdrop-filter: blur(20px);
+  border-color: var(--border);
+  padding: 1rem 3rem;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 1.15rem; font-weight: 800; letter-spacing: 0.01em;
+  color: var(--cream); text-decoration: none;
+}
+.nav-logo span { color: var(--blue); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links a {
+  color: var(--muted); text-decoration: none;
+  font-family: var(--font-mono); font-size: 0.7rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--blue2); }
+.nav-cta {
+  padding: 0.5rem 1.4rem;
+  border: 1px solid var(--blue);
+  color: var(--blue) !important;
+  transition: background 0.2s, color 0.2s !important;
+}
+.nav-cta:hover { background: var(--blue) !important; color: var(--bg) !important; }
 
-        .linktree-main {
-            background: linear-gradient(180deg, rgba(18,18,18,.95), rgba(14,14,14,.95));
-            border: 1px solid rgba(140, 140, 140, 0.18);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 20px 40px rgba(0,0,0,.25);
-            backdrop-filter: blur(7px);
-        }
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 8rem 3rem 4rem;
+  position: relative; overflow: hidden; gap: 4rem;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 55% at 80% 40%, rgba(79,126,255,0.07) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 15% 75%, rgba(79,126,255,0.04) 0%, transparent 70%);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(79,126,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79,126,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: var(--font-mono); font-size: 0.68rem;
+  color: var(--blue); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 2rem;
+  opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
+}
+.hero-tag::before { content: ''; display: block; width: 24px; height: 1px; background: var(--blue); }
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 6vw, 6rem);
+  font-weight: 800; line-height: 1.0; margin-bottom: 1.5rem;
+  opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+}
+.hero-title .name { display: block; color: var(--cream); }
+.hero-title .role {
+  display: block; font-weight: 400;
+  color: var(--blue); font-size: 0.55em; margin-top: 0.4em;
+  letter-spacing: 0.02em;
+}
+.hero-desc {
+  color: var(--subtle); font-size: 1rem; line-height: 1.8;
+  max-width: 420px; margin-bottom: 2.5rem;
+  opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
+}
+.hero-btns {
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
+}
+.btn-blue {
+  padding: 0.85rem 2rem; background: var(--blue); color: #fff;
+  font-family: var(--font-mono); font-size: 0.73rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border: none; border-radius: 3px;
+  text-decoration: none; display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-blue:hover { background: var(--blue2); transform: translateY(-2px); }
+.btn-ghost {
+  padding: 0.85rem 2rem; background: transparent; color: var(--subtle);
+  font-family: var(--font-mono); font-size: 0.73rem;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border: 1px solid var(--border); border-radius: 3px;
+  text-decoration: none; display: inline-block;
+  transition: border-color 0.2s, color 0.2s;
+}
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); }
 
-        .profile-card {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+/* Hero visual */
+.hero-visual {
+  position: relative; z-index: 1;
+  display: flex; justify-content: center; align-items: center;
+  opacity: 0; animation: fadeIn 1.2s 0.4s forwards;
+}
+.hero-frame { position: relative; width: 100%; max-width: 400px; aspect-ratio: 3/4; }
+.hero-photo-placeholder {
+  width: 100%; height: 100%;
+  background: var(--bg3); border: 1px solid var(--border);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 1rem; color: var(--muted);
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+}
+.hero-frame-deco {
+  position: absolute; bottom: -14px; right: -14px;
+  width: 100%; height: 100%; border: 1px solid var(--blue);
+  opacity: 0.12; z-index: -1;
+}
+.hero-frame-tag {
+  position: absolute; bottom: 1.5rem; left: -1px;
+  background: var(--bg); padding: 0.7rem 1.2rem;
+  border-top: 1px solid var(--blue); border-right: 1px solid var(--blue);
+}
+.hero-frame-tag p { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
+.hero-frame-tag h3 { font-family: var(--font-display); font-size: 0.9rem; color: var(--cream); }
+.scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 3rem; z-index: 1;
+  display: flex; align-items: center; gap: 0.75rem;
+  font-family: var(--font-mono); font-size: 0.63rem; color: var(--muted);
+  letter-spacing: 0.15em; text-transform: uppercase;
+  opacity: 0; animation: fadeIn 1s 1.2s forwards;
+}
+.scroll-line { width: 40px; height: 1px; background: var(--muted); position: relative; overflow: hidden; }
+.scroll-line::after {
+  content: ''; position: absolute; top: 0; left: -100%;
+  width: 100%; height: 100%; background: var(--blue);
+  animation: scrollAnim 2s 1.5s infinite;
+}
+@keyframes scrollAnim { to { left: 100%; } }
 
-        .profile-card img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid rgba(111, 229, 255, 0.45);
-            margin-bottom: 10px;
-        }
+/* ─── SHARED SECTION STYLES ──────────────────────────────── */
+section { padding: 7rem 3rem; }
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--blue); letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+.section-eyebrow::before { content: ''; display: block; width: 20px; height: 1px; background: var(--blue); }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 800; line-height: 1.1;
+  color: var(--cream); margin-bottom: 1rem;
+}
+.section-title em { font-style: normal; color: var(--blue); }
+.section-sub { color: var(--subtle); font-size: 1rem; line-height: 1.8; max-width: 520px; margin-bottom: 3.5rem; }
+.divider { width: 100%; height: 1px; background: var(--border); }
 
-        .profile-card h1 {
-            font-size: 1.45rem;
-            margin-bottom: 4px;
-            color: var(--light);
-        }
+/* ─── ABOUT ──────────────────────────────────────────────── */
+.about { background: var(--bg2); }
+.about-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: center; }
+.about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
+.tag {
+  padding: 0.3rem 0.85rem;
+  border: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--subtle); letter-spacing: 0.07em;
+  transition: border-color 0.2s, color 0.2s;
+}
+.tag:hover { border-color: var(--blue); color: var(--blue); }
+.about-img-wrap { position: relative; }
+.about-img {
+  width: 100%; aspect-ratio: 1;
+  background: var(--bg3); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0.75rem;
+  color: var(--muted); font-family: var(--font-mono); font-size: 0.65rem;
+}
+.about-img-label {
+  position: absolute; top: -1px; left: -1px;
+  background: var(--blue); color: #fff;
+  padding: 0.35rem 1rem;
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
+}
 
-        .profile-card p {
-            font-size: 0.95rem;
-            margin-bottom: 14px;
-            color: #c8c7cd;
-            line-height: 1.33;
-        }
+/* ─── MUSIC ──────────────────────────────────────────────── */
+.music { background: var(--bg); }
+.music-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+.music-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+.track {
+  background: var(--bg); padding: 2rem;
+  transition: background 0.25s; position: relative; overflow: hidden;
+}
+.track::before {
+  content: ''; position: absolute; top: 0; left: 0;
+  width: 3px; height: 0; background: var(--blue);
+  transition: height 0.35s;
+}
+.track:hover { background: var(--bg2); }
+.track:hover::before { height: 100%; }
+.track-num { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 1.25rem; }
+.track-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--cream); margin-bottom: 0.3rem; }
+.track-year { font-family: var(--font-mono); font-size: 0.65rem; color: var(--blue); margin-bottom: 1rem; }
+.track-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
+.track-genres { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
+.track-genre {
+  font-family: var(--font-mono); font-size: 0.6rem; color: var(--subtle);
+  border: 1px solid var(--border); padding: 0.18rem 0.55rem; letter-spacing: 0.05em;
+}
+.track-link {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-family: var(--font-mono); font-size: 0.65rem;
+  color: var(--blue); letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; transition: gap 0.2s;
+}
+.track-link:hover { gap: 0.9rem; }
 
-        .link-list {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 18px;
-        }
+/* ─── LEGAL ──────────────────────────────────────────────── */
+.legal { background: var(--bg2); }
+.legal-box {
+  border: 1px solid var(--border);
+  background: var(--bg3);
+  padding: 3rem;
+}
+.legal-box-header {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 2.5rem; padding-bottom: 2rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.legal-services-list { display: flex; flex-direction: column; gap: 0; }
+.legal-service-item {
+  display: grid; grid-template-columns: 2rem 1fr;
+  gap: 1.25rem; padding: 1.5rem 0;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s;
+}
+.legal-service-item:last-child { border-bottom: none; padding-bottom: 0; }
+.legal-service-item:first-child { padding-top: 0; }
+.legal-service-num {
+  font-family: var(--font-mono); font-size: 0.62rem; color: var(--blue);
+  letter-spacing: 0.1em; padding-top: 0.2rem;
+}
+.legal-service-name {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+  color: var(--cream); margin-bottom: 0.4rem;
+}
+.legal-service-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.75; }
 
-        .link-card {
-            display: block;
-            padding: 12px 14px;
-            border-radius: 12px;
-            background-color: rgba(15,15,15,.95);
-            color: white;
-            text-decoration: none;
-            border: 1px solid rgba(255,255,255,.12);
-            box-shadow: 0 8px 16px rgba(0,0,0,.2);
-            font-weight: 600;
-            transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s;
-        }
+/* ─── SOUNDS ─────────────────────────────────────────────── */
+.sounds { background: var(--bg); position: relative; overflow: hidden; }
+.sounds-bg {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 600px; height: 600px; border-radius: 50%;
+  border: 1px solid rgba(79,126,255,0.05); pointer-events: none;
+}
+.sounds-bg::before { content: ''; position: absolute; inset: 80px; border-radius: 50%; border: 1px solid rgba(79,126,255,0.04); }
+.sounds-bg::after  { content: ''; position: absolute; inset: 160px; border-radius: 50%; border: 1px solid rgba(79,126,255,0.03); }
+.sounds-inner { position: relative; z-index: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.sounds-pills { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2.5rem; }
+.sound-pill {
+  display: flex; align-items: center; gap: 0.6rem;
+  padding: 0.45rem 0.9rem; border: 1px solid var(--border);
+  font-family: var(--font-mono); font-size: 0.67rem; color: var(--subtle);
+  letter-spacing: 0.05em; transition: border-color 0.2s, color 0.2s;
+}
+.sound-pill:hover { border-color: var(--blue); color: var(--blue); }
+.sound-pill-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+.lead-form { display: flex; flex-direction: column; gap: 0.75rem; }
+.lead-form input {
+  background: var(--bg2); border: 1px solid var(--border);
+  padding: 0.95rem 1.25rem;
+  color: var(--text); font-family: var(--font-body); font-size: 0.9rem;
+  outline: none; border-radius: 0; transition: border-color 0.2s;
+}
+.lead-form input::placeholder { color: var(--muted); }
+.lead-form input:focus { border-color: var(--blue); }
+.lead-submit {
+  padding: 0.95rem 2rem; background: var(--blue); color: #fff;
+  font-family: var(--font-mono); font-size: 0.73rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  border: none; margin-top: 0.25rem; transition: background 0.2s, transform 0.15s;
+}
+.lead-submit:hover { background: var(--blue2); transform: translateY(-1px); }
+.lead-privacy { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.07em; margin-top: 0.5rem; }
+.sounds-value h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 800; color: var(--cream); margin-bottom: 1rem; line-height: 1.2; }
+.sounds-value h3 em { font-style: normal; color: var(--blue); }
+.sounds-value p { color: var(--subtle); line-height: 1.8; margin-bottom: 2rem; }
 
-        .link-card:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 12px 18px rgba(0,0,0,.35);
-            background-color: rgba(87, 61, 235, 0.95);
-        }
+/* ─── AGENDA ─────────────────────────────────────────────── */
+.agenda { background: var(--bg2); }
+.agenda-inner { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+.session-type {
+  display: flex; align-items: center; gap: 1.25rem;
+  padding: 1.2rem 1.5rem; border: 1px solid var(--border);
+  margin-bottom: 1px; transition: border-color 0.2s, background 0.2s;
+}
+.session-type:hover, .session-type.active { border-color: var(--blue); background: var(--blue3); }
+.session-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.session-info { flex: 1; }
+.session-name { font-size: 0.88rem; color: var(--cream); margin-bottom: 0.15rem; }
+.session-dur { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.08em; }
+.session-price { font-family: var(--font-mono); font-size: 0.72rem; color: var(--blue); }
+.calendly-wrap {
+  background: var(--bg3); border: 1px solid var(--border);
+  padding: 3rem 2.5rem;
+  display: flex; flex-direction: column; align-items: center; text-align: center;
+}
+.calendly-icon { font-size: 2rem; margin-bottom: 1.25rem; opacity: 0.5; }
+.calendly-wrap h3 { font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; color: var(--cream); margin-bottom: 0.75rem; }
+.calendly-wrap p { color: var(--muted); font-size: 0.87rem; line-height: 1.7; margin-bottom: 2rem; max-width: 300px; }
+.btn-calendly {
+  display: inline-block; padding: 1rem 2.5rem;
+  background: var(--blue); color: #fff;
+  font-family: var(--font-mono); font-size: 0.73rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  text-decoration: none; border-radius: 3px;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-calendly:hover { background: var(--blue2); transform: translateY(-2px); }
+.calendly-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; width: 100%; margin-top: 2rem; background: var(--border); }
+.cal-feature { padding: 1rem; background: var(--bg2); text-align: left; }
+.cal-feature-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 0.3rem; text-transform: uppercase; }
+.cal-feature-val { font-size: 0.83rem; color: var(--subtle); }
 
-        .link-card .meta {
-            display: block;
-            font-size: 0.78rem;
-            color: #b1b1b8;
-            margin-top: 4px;
-            font-weight: 400;
-        }
+/* ─── FOOTER ─────────────────────────────────────────────── */
+footer { background: var(--bg); border-top: 1px solid var(--border); padding: 4rem 3rem 2.5rem; }
+.footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 800; color: var(--cream); margin-bottom: 0.75rem; }
+.footer-brand h2 span { color: var(--blue); }
+.footer-brand p { color: var(--muted); font-size: 0.87rem; line-height: 1.8; max-width: 280px; }
+.footer-col h4 { font-family: var(--font-mono); font-size: 0.62rem; color: var(--blue); letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 1.25rem; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.75rem; }
+.footer-col ul li a { color: var(--muted); text-decoration: none; font-size: 0.87rem; transition: color 0.2s; }
+.footer-col ul li a:hover { color: var(--blue2); }
+.footer-bottom { border-top: 1px solid var(--border); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+.footer-copy { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.07em; }
+.footer-socials { display: flex; gap: 1.5rem; }
+.footer-social { font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+.footer-social:hover { color: var(--blue2); }
 
-        .toggle-fullsite {
-            width: 100%;
-            text-align: center;
-            border-radius: 10px;
-            background: none;
-            border: 1px solid rgba(255, 255, 255, 0.22);
-            color: #d0d0d4;
-            padding: 10px;
-            font-size: 0.85rem;
-            cursor: pointer;
-            margin-top: 8px;
-        }
+/* ─── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-        .linktree-footer {
-            color: #9a9aa3;
-            font-size: 0.8rem;
-            text-align: center;
-            margin-top: 12px;
-        }
-
-        .linktree-teaser {
-            background: rgba(22, 22, 22, 0.62);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 12px;
-            margin-top: 14px;
-            color: #ddd;
-            font-size: .87rem;
-            line-height: 1.35;
-            text-align: left;
-        }
-
-        .linktree-teaser h3 {
-            margin-top: 0;
-            margin-bottom: 8px;
-            color: #fff;
-            font-size: 1rem;
-        }
-
-        .extended-content {
-            display: none;
-        }
-
-        .extended-content.open {
-            display: block;
-        }
-
-        .hero,
-        .section,
-        .services,
-        .portfolio,
-        .contact-form,
-        footer {
-            display: none;
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 550px;
-            }
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary);
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-        
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(108, 65, 236, 0.2);
-        }
-        
-        .section {
-            padding: 80px 0;
-            border-bottom: 1px solid var(--gray);
-        }
-        
-        .section-title {
-            font-size: 32px;
-            margin-bottom: 40px;
-            color: var(--secondary);
-        }
-        
-        .services {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 60px;
-        }
-        
-        .service-card {
-            background-color: var(--gray);
-            padding: 30px;
-            border-radius: 10px;
-            transition: transform 0.3s;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .service-card h3 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            color: var(--primary);
-        }
-        
-        .portfolio {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        
-        .portfolio-item {
-            background-color: var(--gray);
-            border-radius: 10px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .portfolio-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-        }
-        
-        .audio-player {
-            background-color: var(--gray);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-        }
-        
-        .player-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .player-controls button {
-            background: none;
-            border: none;
-            color: var(--light);
-            font-size: 20px;
-            cursor: pointer;
-        }
-        
-        .progress-container {
-            flex-grow: 1;
-            height: 5px;
-            background-color: #444;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        
-        .progress {
-            height: 100%;
-            background-color: var(--primary);
-            border-radius: 5px;
-            width: 0%;
-        }
-        
-        .time {
-            font-size: 14px;
-            color: #aaa;
-        }
-        
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 20px;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-        
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            background-color: var(--gray);
-            border: 1px solid #444;
-            border-radius: 5px;
-            color: var(--light);
-        }
-        
-        footer {
-            text-align: center;
-            padding: 30px 0;
-            color: #aaa;
-            font-size: 14px;
-        }
-        
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .nav-links {
-                display: none;
-            }
-        }
-    </style>
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  nav { padding: 1.2rem 1.5rem; }
+  nav.scrolled { padding: 0.9rem 1.5rem; }
+  .nav-links { gap: 1.25rem; }
+  section { padding: 5rem 1.5rem; }
+  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
+  .hero-visual { display: none; }
+  .about-inner, .sounds-inner, .agenda-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .music-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 600px) {
+  .hero-title { font-size: 2.8rem; }
+  .legal-box { padding: 1.75rem; }
+  .legal-box-header { flex-direction: column; }
+  .calendly-features { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <nav>
-                <img src="/Imagenes/Logo.JPG" alt="Logo" class="logo" style="height:40px;"></img>
-                <div class="nav-links">
-                    <a href="#services" id="openCalendarLink">Agendar asesoria</a>
-                    <a href="#portfolio">Portafolio</a>
-                    <a href="#about">Acerca de mi</a>
-                    <a href="#contact">Contacto</a>
-                </div>
-            </nav>
-        </header>
-        
-        <main class="linktree-main" aria-label="Perfil rápido">
-            <div class="profile-card">
-                <img src="/Imagenes/Foto.JPG" alt="Foto de Diego Guasp">
-                <h1>Diego Guasp</h1>
-                <p>Productor Musical • Asesor Legal Musical • Mentor</p>
-            </div>
-            <div class="link-list" id="linkList"></div>
-            <div class="linktree-teaser" aria-live="polite">
-                <h3>Mi perfil online en un vistazo</h3>
-                <p>Enlaces rápidos + proyectos recientes. Pulsa "Ver sitio completo" para ver portfolio, audio, mentoring y contacto detallado.</p>
-            </div>
-            <button type="button" class="toggle-fullsite" id="toggleFull">Ver sitio completo</button>
-            <p class="linktree-footer">Diseño compacto estilo Linktree, con enlaces rápidos y sección completa opcional.</p>
-        </main>
 
-        <div class="extended-content" id="fullContent">
-            <section class="hero">
-                <h1>Diego Guasp</h1>
-                <p>Productor Musical & Asesor Legal Musical</p>
-                <a href="#contact" class="btn">Get In Touch</a>
-            </section>
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Diego<span>.</span>Guasp</a>
+  <ul class="nav-links">
+    <li><a href="#sobre-mi">Bio</a></li>
+    <li><a href="#musica">Mi música</a></li>
+    <li><a href="#asesoria">Servicios Legales</a></li>
+    <li><a href="#libreria">Librerías</a></li>
+    <li><a href="#agenda" class="nav-cta">Agendar Asesoría</a></li>
+  </ul>
+</nav>
 
-            <section id="services" class="section">
-            <h2 class="section-title">Servicios</h2>
-            <div class="services">
-                <div class="service-card">
-                    <h3>Produccion Musical</h3>
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/5fb0f70b-26c9-4ad1-a10c-cbe5a8342d10.png" alt="Professional music studio with mixing console, monitors, and acoustic treatment" />
-                    <p>Full-service music production including recording, mixing, mastering, and arrangement. Specializing in hip-hop, electronic, and pop genres.</p>
-                    <ul>
-                        <li>Beat production</li>
-                        <li>Vocal recording</li>
-                        <li>Mixing & mastering</li>
-                        <li>Sound design</li>
-                    </ul>
-                </div>
-                <div class="service-card">
-                    <h3>Asesoria Legal</h3>
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/caccce48-aa95-4034-8af3-e89a7a5de028.png" alt="Attorney reviewing legal documents in a modern office setting" />
-                    <p>Music industry legal services to protect your creative work and business interests.</p>
-                    <ul>
-                        <li>Contract review & negotiation</li>
-                        <li>Copyright registration</li>
-                        <li>Sample clearance</li>
-                        <li>Licensing agreements</li>
-                        <li>Trademark protection</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-        
-        <section id="portfolio" class="section">
-            <h2 class="section-title">Portfolio</h2>
-            <div class="portfolio">
-                <div class="portfolio-item">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/f52fffe9-c092-4984-8377-21517e11a6ca.png" alt="Album cover artwork for a hip-hop release featuring urban cityscape at night" />
-                    <div class="portfolio-overlay">
-                        <h3>Urban Beats Vol. 3</h3>
-                        <p>Album production for emerging hip-hop artist</p>
-                        <div class="audio-player">
-                            <audio id="track1" src=""></audio>
-                            <div class="player-controls">
-                                <button id="playBtn1">▶</button>
-                                <div class="progress-container">
-                                    <div class="progress" id="progress1"></div>
-                                </div>
-                                <div class="time" id="time1">0:00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/3196cd00-e515-45d9-94fd-b67e6199ebe6.png" alt="Electronic music festival stage with light show and crowd" />
-                    <div class="portfolio-overlay">
-                        <h3>Festival Anthems 2023</h3>
-                        <p>Co-production for major festival hit</p>
-                        <div class="audio-player">
-                            <audio id="track2" src=""></audio>
-                            <div class="player-controls">
-                                <button id="playBtn2">▶</button>
-                                <div class="progress-container">
-                                    <div class="progress" id="progress2"></div>
-                                </div>
-                                <div class="time" id="time2">0:00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e481c936-b364-459a-9726-3c31259562a1.png" alt="Legal documents and contracts on a wooden desk with gavel and scales of justice" />
-                    <div class="portfolio-overlay">
-                        <h3>Sample Clearance Case</h3>
-                        <p>Successfully negotiated sample clearance for platinum record</p>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/33e981e5-6984-4dd6-b25c-63cb2ffd9793.png" alt="Recording studio vocal booth with singer wearing headphones" />
-                    <div class="portfolio-overlay">
-                        <h3>Vocal Production</h3>
-                        <p>Artist vocal coaching and production</p>
-                        <div class="audio-player">
-                            <audio id="track3" src=""></audio>
-                            <div class="player-controls">
-                                <button id="playBtn3">▶</button>
-                                <div class="progress-container">
-                                    <div class="progress" id="progress3"></div>
-                                </div>
-                                <div class="time" id="time3">0:00</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="about" class="section">
-            <h2 class="section-title">About Me</h2>
-            <div style="display: flex; gap: 30px; align-items: center; flex-wrap: wrap;">
-                <div style="flex: 1; min-width: 300px;">
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/631f9062-d753-4b2a-8af0-4acaec29274d.png" alt="Professional headshot of music producer in studio wearing headphones with modern urban background" style="width: 100%; border-radius: 10px;" />
-                </div>
-                <div style="flex: 1; min-width: 300px;">
-                    <p>With over 10 years in the music industry, I bring a unique combination of technical production skills and legal expertise to help artists navigate both the creative and business sides of music.</p>
-                    <p>After graduating from Berklee College of Music and earning my law degree from UCLA, I've worked with Grammy-winning artists and independent musicians alike, always with the same commitment to artistic excellence and fair business practices.</p>
-                    <p>My mission is to empower artists with both killer beats and the legal knowledge to protect their work.</p>
-                    <div style="margin-top: 30px;">
-                        <h3 style="color: var(--primary); margin-bottom: 15px;">Clients & Collaborations</h3>
-                        <ul style="columns: 2; list-style-position: inside;">
-                            <li>Sony Music</li>
-                            <li>Atlantic Records</li>
-                            <li>Universal Publishing</li>
-                            <li>Independent Artists</li>
-                            <li>Film & TV Producers</li>
-                            <li>Advertising Agencies</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section id="mentoring" class="section">
-            <h2 class="section-title">Legal Mentoring</h2>
-            <div class="services">
-                <div class="service-card">
-                    <h3>1-on-1 Legal Consultation</h3>
-                    <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/2fc32df3-f1ce-443b-81b8-025c873cc404.png" alt="Lawyer discussing contracts with client" />
-                    <p>Book private mentoring sessions to get personalized advice on your music legal matters.</p>
-                    <ul>
-                        <li>Contract review</li>
-                        <li>Copyright guidance</li>
-                        <li>Licensing advice</li>
-                        <li>Business strategy</li>
-                    </ul>
-                    <a href="#" class="btn" style="margin-top:20px;">Book a Session</a>
-                </div>
-            </div>
-        </section>
-
-        <section id="" class="section">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-form">
-                <form id="contactForm">
-                    <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="service">Service Needed</label>
-                        <select id="service">
-                            <option value="">Select a service</option>
-                            <option value="production">Music Production</option>
-                            <option value="legal">Legal Advisory</option>
-                            <option value="mentoring">Legal Mentoring Session</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn">Send Message</button>
-                </form>
-            </div>
-        </section>
-        
-        <footer>
-            <p>© 2026 Diego Guasp. Todos los derechos reservados.</p>
-        </footer>
-            </div>
-        </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Linktree-style quick links
-            const links = [
-                { title: 'Agendar asesoría', href: 'https://calendly.com/diegoguasp/asesoria-legal', meta: 'legal' },
-                { title: 'Band Camp', href: 'https://diegoguasp.bandcamp.com' },
-                { title: 'Apple Music', href: 'https://music.apple.com/mx/artist/diego-guasp/1601722653?l=en-GB' },
-                { title: 'Spotify', href: 'https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ' },
-                { title: 'Tiktok', href: 'https://www.tiktok.com/@diegoguasp', meta: 'Videos sobre temas de la industria musical' },
-                { title: 'Mezcla de trailes', href: 'https://www.youtube.com/watch?v=2tfLSS6xUOE' },
-                { title: 'Diseño sonoro', href: 'https://m.imdb.com/name/nm13882269/' },
-                { title: 'Contacto', href: 'https://docs.google.com/forms/d/e/1FAIpQLSdvf7F2NnrZAhhWy4JkZOaRzMHRDH6InpYZKcgke1tkv17A9A/viewform?usp=preview' }
-            ];
-
-            const linkListEl = document.getElementById('linkList');
-            if (linkListEl) {
-                links.forEach(item => {
-                    const a = document.createElement('a');
-                    a.className = 'link-card';
-                    a.href = item.href;
-                    a.innerHTML = `${item.title} <span class="meta">${item.meta}</span>`;
-                    linkListEl.appendChild(a);
-                });
-            }
-
-            const toggleBtn = document.getElementById('toggleFull');
-            const fullEl = document.getElementById('fullContent');
-            if (toggleBtn && fullEl) {
-                toggleBtn.addEventListener('click', function() {
-                    const open = fullEl.classList.toggle('open');
-                    this.textContent = open ? 'Ocultar sitio completo' : 'Ver sitio completo';
-                });
-            }
-
-            // Initialize players
-            const players = [
-                { id: 1, audio: document.getElementById('track1'), playBtn: document.getElementById('playBtn1'), progress: document.getElementById('progress1'), time: document.getElementById('time1') },
-                { id: 2, audio: document.getElementById('track2'), playBtn: document.getElementById('playBtn2'), progress: document.getElementById('progress2'), time: document.getElementById('time2') },
-                { id: 3, audio: document.getElementById('track3'), playBtn: document.getElementById('playBtn3'), progress: document.getElementById('progress3'), time: document.getElementById('time3') }
-            ];
-            
-            // Set up each player
-            players.forEach(player => {
-                if (player.audio) {
-                    // Play/pause toggle
-                    player.playBtn.addEventListener('click', function() {
-                        if (player.audio.paused) {
-                            // Pause all other players first
-                            players.forEach(p => {
-                                if (p.id !== player.id && !p.audio.paused) {
-                                    p.audio.pause();
-                                    p.playBtn.textContent = '▶';
-                                }
-                            });
-                            
-                            player.audio.play();
-                            player.playBtn.textContent = '❚❚';
-                        } else {
-                            player.audio.pause();
-                            player.playBtn.textContent = '▶';
-                        }
-                    });
-                    
-                    // Update progress bar
-                    player.audio.addEventListener('timeupdate', function() {
-                        const percent = (player.audio.currentTime / player.audio.duration) * 100;
-                        player.progress.style.width = `${percent}%`;
-                        
-                        // Update time display
-                        const minutes = Math.floor(player.audio.currentTime / 60);
-                        const seconds = Math.floor(player.audio.currentTime % 60).toString().padStart(2, '0');
-                        player.time.textContent = `${minutes}:${seconds}`;
-                    });
-                    
-                    // Click on progress bar to seek
-                    const progressContainer = player.progress.parentElement;
-                    progressContainer.addEventListener('click', function(e) {
-                        const width = this.offsetWidth;
-                        const clickX = e.offsetX;
-                        const duration = player.audio.duration;
-                        player.audio.currentTime = (clickX / width) * duration;
-                    });
-                    
-                    // Reset when ended
-                    player.audio.addEventListener('ended', function() {
-                        player.playBtn.textContent = '▶';
-                        player.progress.style.width = '0%';
-                        player.time.textContent = '0:00';
-                    });
-                }
-            });
-            
-            // Form submission
-            const contactForm = document.getElementById('contactForm');
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form values
-                    const name = document.getElementById('name').value;
-                    const email = document.getElementById('email').value;
-                    const service = document.getElementById('service').value;
-                    const message = document.getElementById('message').value;
-                    
-                    // Here you would normally send this data to a server
-                    console.log('Form submitted:', { name, email, service, message });
-                    
-                    // Show success message (in a real app, you'd have proper feedback)
-                    alert('Thank you for your message! I will get back to you soon.');
-                    contactForm.reset();
-                });
-            }
-        });
-    </script>
-    <script src="Backend/blocked-dates.js"></script>
-    <script src="Backend/calendar-js.js"></script>
-    
-    <!-- Calendario para agendar Asesoría Legal -->
-    <div id="calendarModal" style="display:none; position:fixed; z-index:9999; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.8);">
-      <div style="background:#222; max-width:400px; margin:60px auto; border-radius:10px; box-shadow:0 4px 20px #000; padding:30px; color:#fff; position:relative;">
-        <button id="closeCalendar" style="position:absolute; top:10px; right:10px; background:none; border:none; color:#fff; font-size:24px;">×</button>
-        <h2 style="color:var(--secondary); text-align:center; margin-bottom:20px;">Agendar Asesoría Legal</h2>
-        <form id="calendarForm">
-          <div class="form-group">
-            <label for="cal-name">Nombre</label>
-            <input type="text" id="cal-name" name="nombre" required>
-          </div>
-          <div class="form-group">
-            <label for="cal-email">Email</label>
-            <input type="email" id="cal-email" name="email" required>
-          </div>
-          <div class="form-group">
-            <label for="cal-date">Fecha</label>
-            <input type="date" id="cal-date" name="fecha" required min="">
-          </div>
-          <div class="form-group">
-            <label for="cal-hour">Horario</label>
-            <select id="cal-hour" name="hora" required>
-              <option value="">Selecciona horario</option>
-              <option value="09:00">09:00 - 10:00</option>
-              <option value="11:00">11:00 - 12:00</option>
-              <option value="15:00">15:00 - 16:00</option>
-              <option value="17:00">17:00 - 18:00</option>
-            </select>
-          </div>
-          <input type="hidden" name="servicio" value="Asesoría Legal">
-          <button type="submit" class="btn" style="width:100%; margin-top:15px;">Agendar</button>
-        </form>
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="name">Diego Guasp</span>
+      <span class="role">Productor Musical · Asesor Legal Musical</span>
+    </h1>
+    <p class="hero-desc">
+      Mi musica suena como una pelicula
+    </p>
+    <div class="hero-btns">
+      <a href="#musica" class="btn-blue">Escuchar música</a>
+      <a href="#agenda" class="btn-ghost">Agendar asesoría</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-frame">
+      <div class="hero-photo-placeholder">
+        <img src="/Imagenes/Foto.JPG" alt="Diego Guasp" style="width:100%;height:100%;object-fit:cover">
+        <span style="font-size:2.5rem;opacity:0.15">◈</span>
       </div>
     </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="sobre-mi">
+  <div class="about-inner">
+    <div>
+      <div class="section-eyebrow reveal">Sobre mí</div>
+      <h2 class="section-title reveal">Música que <em>se siente</em>,<br>derecho que protege.</h2>
+      <p class="section-sub reveal">
+        <!-- ✏️ REEMPLAZA CON TU BIO -->
+        Diego Guasp es un productor musical, ingeniero en audio y diseñador sonoro de películas, originario de Guadalajara, México. 
+        Además, es asesor de a artistas y productores musicales en todo lo relacionado con derechos de autor, regalias, contratos y marcas.
+      </p>
+      <div class="about-tags reveal">
+        <span class="tag">Soundtrack</span>
+        <span class="tag">RnB</span>
+        <span class="tag">Pop</span>
+        <span class="tag">Audio Engineering</span>
+        <span class="tag">Sound Design</span>
+        <span class="tag">Copyright</span>
+        <span class="tag">Royalties</span>
+      </div>
+    </div>
+    <div class="about-img-wrap reveal">
+      <div class="about-img">
+        <img src="/Imagenes/Logo.JPG" alt="Diego Guasp" style="width:100%;height:100%;object-fit:cover">
+        <span style="font-size:2rem;opacity:0.12">◈</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MUSIC -->
+<section class="music" id="musica">
+  <div class="music-header">
+    <div>
+      <div class="section-eyebrow reveal">Portafolio</div>
+      <h2 class="section-title reveal">Discografía</h2>
+    </div>
+    <a href="https://diegoguasp.bandcamp.com" target="_blank" rel="noopener" class="btn-ghost reveal" style="align-self:flex-end">Comprar en Bandcamp →</a>
+  </div>
+  <div class="music-grid reveal">
+    <div class="track">
+      <div class="track-num">03 — 2025</div>
+      <div class="track-title">Autum</div>
+      <div class="track-year">Álbum · Noviembre 2025 · Último release</div>
+      <div class="track-desc">Mucho piano y saxofon. El sonido actual de Diego Guasp.</div>
+      <div class="track-genres">
+        <span class="track-genre">Soft Piano</span>
+        <span class="track-genre">RnB</span>
+      </div>
+      <a href="https://diegoguasp.bandcamp.com/album/autum" target="_blank" rel="noopener" class="track-link">Escuchar →</a>
+    </div>
+    <div class="track">
+      <div class="track-num">02 — 2025</div>
+      <div class="track-title">グアスプ</div>
+      <div class="track-year">Álbum · Abril 2025</div>
+      <div class="track-desc">グアスプ que significa "Guasp", el segundo apellido de Diego, combina texturas electrónicas y ritmos variados.</div>
+      <div class="track-genres">
+        <span class="track-genre">Bossa Nova Jazz</span>
+        <span class="track-genre">Dream Pop</span>
+      </div>
+      <a href="https://diegoguasp.bandcamp.com/album/-" target="_blank" rel="noopener" class="track-link">Escuchar →</a>
+    </div>
+    <div class="track">
+      <div class="track-num">01 — 2022</div>
+      <div class="track-title">Break You</div>
+      <div class="track-year">Single · Enero 2022</div>
+      <div class="track-desc">Track instrumental producido para el scoring de un cortometraje. Atmosferas hechas con sintetizadores con inspiracion en Coldplay.</div>
+      <div class="track-genres">
+        <span class="track-genre">Ambient Pop</span>
+        <span class="track-genre">Cinematic</span>
+      </div>
+      <a href="https://diegoguasp.bandcamp.com/track/break-you" target="_blank" rel="noopener" class="track-link">Escuchar →</a>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:3rem;" class="reveal">
+    <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;margin-bottom:1.5rem;">También disponible en</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.7rem;padding:0.6rem 1.4rem;">Spotify</a>
+      <a href="https://music.apple.com/mx/artist/diego-guasp/1601722653" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.7rem;padding:0.6rem 1.4rem;">Apple Music</a>
+      <a href="https://music.amazon.com.mx/artists/B09PHXPJSR/diego-guasp" target="_blank" rel="noopener" class="btn-ghost" style="font-size:0.7rem;padding:0.6rem 1.4rem;">Amazon Music</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- LEGAL -->
+<section class="legal" id="asesoria">
+  <div style="display:grid;grid-template-columns:1fr 2.2fr;gap:5rem;align-items:start;" class="reveal">
+    <div>
+      <div class="section-eyebrow">Asesoría Legal Artistica</div>
+      <h2 class="section-title">Tu arte,<br><em>protegido.</em></h2>
+      <p style="color:var(--subtle);font-size:0.9rem;line-height:1.8;margin-bottom:2rem;">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
+      <a href="#agenda" class="btn-blue" style="font-size:0.7rem;">Agendar asesoría →</a>
+    </div>
+    <div class="legal-box">
+      <div class="legal-box-header">
+        <div>
+          <p style="font-family:var(--font-mono);font-size:0.62rem;color:var(--blue);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:0.4rem;">Servicios</p>
+          <h3 style="font-family:var(--font-display);font-size:1.2rem;font-weight:800;color:var(--cream);">Asesoría Legal</h3>
+        </div>
+        <div style="text-align:right;">
+          <p style="font-family:var(--font-mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;">Guadalajara & CDMX, México</p>
+          <p style="font-family:var(--font-mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.1em;">Online · Presencial</p>
+        </div>
+      </div>
+      <div class="legal-services-list">
+        <div class="legal-service-item">
+          <div class="legal-service-num">01</div>
+          <div>
+            <div class="legal-service-name">Asesorías Legales</div>
+            <div class="legal-service-desc">Guío a artistas, bandas y músicos a entender dónde están parados legalmente y qué necesitan hacer según su situación particular. Cada caso es único y lo atiendo de forma personalizada.</div>
+          </div>
+        </div>
+        <div class="legal-service-item">
+          <div class="legal-service-num">02</div>
+          <div>
+            <div class="legal-service-name">Registro de Canciones y Fonogramas</div>
+            <div class="legal-service-desc">Llevo a cabo la protección legal de los derechos de autor de obras y grabaciones ante los organismos correspondientes.</div>
+          </div>
+        </div>
+        <div class="legal-service-item">
+          <div class="legal-service-num">03</div>
+          <div>
+            <div class="legal-service-name">Afiliación a Sociedades de Gestión</div>
+            <div class="legal-service-desc">Apoyo a autores y compositores en el proceso de afiliación a las sociedades de gestión colectiva para que puedan cobrar todas las regalías posibles.</div>
+          </div>
+        </div>
+        <div class="legal-service-item">
+          <div class="legal-service-num">04</div>
+          <div>
+            <div class="legal-service-name">Registro de Marcas, Contratos y Licencias</div>
+            <div class="legal-service-desc">Registro marcas y redacto licencias de sincronización o cualquier contrato necesario en la industria musical.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIBRERÍA DE SONIDOS -->
+<section class="sounds" id="libreria">
+  <div class="sounds-bg"></div>
+  <div class="sounds-inner">
+    <div class="sounds-value reveal">
+      <div class="section-eyebrow">Librería de Sonidos</div>
+      <h3>Mi libreria de sonidos <em>gratis</em></h3>
+      <p>Samples y loops creados por mi. 100% libres para usar en tus producciones.</p>
+      <div class="sounds-pills">
+        <div class="sound-pill"><div class="sound-pill-dot"></div>Cinematic Loops</div>
+        <div class="sound-pill"><div class="sound-pill-dot"></div>Ambient Textures</div>
+        <div class="sound-pill"><div class="sound-pill-dot"></div>Drum Kit</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div style="border:1px solid var(--border);padding:2.5rem;background:var(--bg2);">
+        <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--blue);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem;">Acceso gratuito</p>
+        <h4 style="font-family:var(--font-display);font-size:1.35rem;font-weight:800;color:var(--cream);margin-bottom:0.5rem;">Déjame tus datos</h4>
+        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:1.75rem;line-height:1.7;">Comparte tu información y te envío el pack directo a tu correo. Sin spam, solo contenido de valor para músicos.</p>
+        <div class="lead-form">
+          <input type="text" id="leadName" placeholder="Tu nombre" autocomplete="off">
+          <input type="email" id="leadEmail" placeholder="Correo electrónico" autocomplete="off">
+          <input type="text" id="leadRole" placeholder="¿Eres artista, productor o manager?" autocomplete="off">
+          <button class="lead-submit" onclick="handleLead()">Quiero el pack gratuito →</button>
+        </div>
+        <p class="lead-privacy">🔒 Sin spam — Solo el contenido para creadores</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA -->
+<section class="agenda" id="agenda">
+  <div class="agenda-inner">
+    <div>
+      <div class="section-eyebrow reveal">Agenda tu sesión</div>
+      <h2 class="section-title reveal">Reserva tu<br><em>asesoría.</em></h2>
+      <p class="section-sub reveal">Selecciona el horario disponible que mejor se te acomode a través de Calendly.</p>
+    </div>
+    <div class="reveal">
+      <div class="calendly-wrap">
+        <div class="calendly-icon">◷</div>
+        <h3>Calendario</h3>
+        <p>Recibirás confirmación y recordatorio automático por correo.</p>
+        <a href="https://calendly.com/diegoguasp/asesoria-legal" target="_blank" rel="noopener" class="btn-calendly">Reservar asesoría →</a>
+        <div class="calendly-features">
+          <div class="cal-feature">
+            <div class="cal-feature-label">Costo</div>
+            <div class="cal-feature-val">250 MXN</div>
+          </div>
+          <div class="cal-feature">
+            <div class="cal-feature-label">Modalidad</div>
+            <div class="cal-feature-val">Video llamada o presencial</div>
+          </div>
+          <div class="cal-feature">
+            <div class="cal-feature-label">Zona horaria</div>
+            <div class="cal-feature-val">Hora del Centro de Mexico (GMT-6)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <h2>Diego<span>.</span>Guasp</h2>
+      <p>Productor musical y asesor legal musical.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#sobre-mi">Bio</a></li>
+        <li><a href="#musica">Música</a></li>
+        <li><a href="#asesoria">Asesoría</a></li>
+        <li><a href="#libreria">Librería</a></li>
+        <li><a href="#agenda">Agendar</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Música</h4>
+      <ul>
+        <li><a href="https://diegoguasp.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a></li>
+        <li><a href="https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ" target="_blank" rel="noopener">Spotify</a></li>
+        <li><a href="https://music.apple.com/mx/artist/diego-guasp/1601722653" target="_blank" rel="noopener">Apple Music</a></li>
+        <li><a href="https://calendly.com/diegoguasp/asesoria-legal" target="_blank" rel="noopener">Agendar asesoría</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Diego Guasp — Todos los derechos reservados</span>
+    <div class="footer-socials">
+      <a href="https://instagram.com/diego.guasp" target="_blank" rel="noopener" class="footer-social">Instagram</a>
+      <a href="https://tiktok.com/@diegoguasp" target="_blank" rel="noopener" class="footer-social">TikTok</a>
+      <a href="https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ" target="_blank" rel="noopener" class="footer-social">Spotify</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+
+// Reveal on scroll
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Session type selection
+document.querySelectorAll('.session-type').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.session-type').forEach(e => e.classList.remove('active'));
+    el.classList.add('active');
+  });
+});
+
+// Lead form
+function handleLead() {
+  const name = document.getElementById('leadName').value.trim();
+  const email = document.getElementById('leadEmail').value.trim();
+  if (!name || !email) { alert('Por favor ingresa tu nombre y correo.'); return; }
+  const btn = document.querySelector('.lead-submit');
+  btn.textContent = '¡Listo! Revisa tu correo →';
+  btn.style.background = '#3a7a3a';
+  btn.disabled = true;
+  console.log('Lead:', { name, email, role: document.getElementById('leadRole').value });
+}
+</script>
 </body>
 </html>
