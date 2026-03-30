@@ -383,9 +383,45 @@ section { padding: 7rem 3rem; }
   letter-spacing: 0.1em; text-transform: uppercase;
   text-decoration: none; border-radius: 3px;
   transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
 }
 .btn-calendly:hover { background: var(--blue2); transform: translateY(-2px); }
-.calendly-features { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; width: 100%; margin-top: 2rem; background: var(--border); }
+/* Modal de reserva */
+#calendlyModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+#calendlyModal.active { display: flex; }
+#calendlyModal .modal-card {
+  width: min(900px, 100%);
+  max-height: 90vh;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 60px rgba(0,0,0,.45);
+}
+#calendlyModal .modal-header {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+#calendlyModal .modal-header h3 {
+  margin: 0; font-family: var(--font-display); font-size: 1rem; color: var(--cream);
+}
+#calendlyModal .modal-close {
+  background: transparent; border: none; color: var(--muted); font-size: 1.3rem; cursor: pointer;
+}
+#calendlyModal .modal-body { padding: 0; }
+#calendlyModal .modal-body iframe { width: 100%; height: 70vh; border: 0; }
+.calendly-features { display: flex; grid-template-columns: 1fr 1fr; gap: 1px; width: 100%; margin-top: 2rem; background: var(--border); }
 .cal-feature { padding: 1rem; background: var(--bg2); text-align: left; }
 .cal-feature-label { font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 0.3rem; text-transform: uppercase; }
 .cal-feature-val { font-size: 0.83rem; color: var(--subtle); }
@@ -663,7 +699,7 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 4r
         <div class="calendly-icon">◷</div>
         <h3>Calendario</h3>
         <p>Recibirás confirmación y recordatorio automático por correo.</p>
-        <a href="https://calendly.com/diegoguasp/asesoria-legal" target="_blank" rel="noopener" class="btn-calendly">Reservar asesoría →</a>
+        <button type="button" id="openCalendly" class="btn-calendly">Reservar asesoría →</button>
         <div class="calendly-features">
           <div class="cal-feature">
             <div class="cal-feature-label">Costo</div>
@@ -720,6 +756,19 @@ footer { background: var(--bg); border-top: 1px solid var(--border); padding: 4r
   </div>
 </footer>
 
+<!-- Calendly modal -->
+<div id="calendlyModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Reservar asesoría</h3>
+      <button class="modal-close" id="closeCalendly">×</button>
+    </div>
+    <div class="modal-body">
+      <iframe src="https://calendly.com/diegoguasp/asesoria-legal?embed_domain=localhost&embed_type=Inline" title="Calendly" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
 <script>
 // Navbar scroll
 const navbar = document.getElementById('navbar');
@@ -750,6 +799,13 @@ function handleLead() {
   btn.disabled = true;
   console.log('Lead:', { name, email, role: document.getElementById('leadRole').value });
 }
+
+const modal = document.getElementById('calendlyModal');
+const openBtn = document.getElementById('openCalendly');
+const closeBtn = document.getElementById('closeCalendly');
+openBtn.addEventListener('click', () => modal.classList.add('active'));
+closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
 </script>
 </body>
 </html>
