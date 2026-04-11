@@ -199,7 +199,6 @@ section { padding: 7rem 3rem; }
 
 /* ─── MUSIC ─── */
 .music { background: var(--bg); }
-.music-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
 .music-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
 .track {
   background: var(--bg); padding: 2rem;
@@ -229,36 +228,27 @@ section { padding: 7rem 3rem; }
 .track-link:hover { gap: 0.9rem; }
 
 /* Bandcamp header button */
-.btn-bandcamp {
-  display: inline-flex; align-items: center; gap: 0.6rem;
-  padding: 0.7rem 1.4rem;
-  border: 1px solid rgba(40,45,80,0.2); border-radius: 3px;
-  background: var(--bg3); text-decoration: none;
-  font-family: var(--font-mono); font-size: 0.7rem; color: var(--subtle);
-  letter-spacing: 0.06em; transition: border-color 0.2s, color 0.2s;
-  align-self: flex-end;
+.music-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+.music-platforms { display: flex; align-items: flex-end; gap: 0; }
+.platform-group { display: flex; flex-direction: column; gap: 0.5rem; padding: 0 1.5rem; }
+.platform-group:first-child { padding-left: 0; }
+.platform-group + .platform-group { border-left: 1px solid var(--border); }
+.platform-group-label {
+  font-family: var(--font-mono); font-size: 0.58rem; color: var(--muted);
+  letter-spacing: 0.15em; text-transform: uppercase;
 }
-.btn-bandcamp:hover { border-color: var(--blue); color: var(--blue); }
-.btn-bandcamp svg { width: 16px; height: 16px; flex-shrink: 0; }
-
-/* ─── PLATFORMS ─── */
-.platforms-row { text-align: center; margin-top: 3.5rem; }
-.platforms-label {
-  font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted);
-  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.75rem;
-}
-.platforms-grid { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.platform-group-btns { display: flex; gap: 0.5rem; flex-wrap: wrap; }
 .platform-btn {
-  display: inline-flex; align-items: center; gap: 0.65rem;
-  padding: 0.75rem 1.6rem;
-  border: 1px solid var(--border); border-radius: 4px;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--border); border-radius: 3px;
   background: var(--bg3); text-decoration: none;
-  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
-  color: var(--subtle); letter-spacing: 0.06em;
+  font-family: var(--font-mono); font-size: 0.68rem; color: var(--subtle);
+  letter-spacing: 0.05em;
   transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s;
 }
-.platform-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--bg2); transform: translateY(-2px); }
-.platform-btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+.platform-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--bg2); transform: translateY(-1px); }
+.platform-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
 
 /* ─── LEGAL + AGENDA ─── */
 .legal-agenda { background: var(--bg2); }
@@ -375,13 +365,17 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   .hero-visual { display: none; }
   .about-inner, .sounds-inner, .legal-agenda-cols { grid-template-columns: 1fr; gap: 3rem; }
   .music-grid { grid-template-columns: 1fr; }
+  .music-header { flex-direction: column; align-items: flex-start; }
+  .music-platforms { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .platform-group { padding: 0; }
+  .platform-group + .platform-group { border-left: none; border-top: 1px solid var(--border); padding-top: 1rem; }
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
 }
 @media (max-width: 600px) {
   .hero-title { font-size: 2.8rem; }
   .legal-box { padding: 1.5rem; }
   .agenda-features { grid-template-columns: 1fr; }
-  .platforms-grid { flex-direction: column; align-items: center; }
+  .platform-group-btns { flex-wrap: wrap; }
 }
 </style>
 </head>
@@ -395,7 +389,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     <li><a href="#musica">Mi música</a></li>
     <li><a href="#asesoria">Servicios Legales</a></li>
     <li><a href="#libreria">Librería</a></li>
-    <li><a href="#asesoria" class="nav-cta">Agendar Asesoría</a></li>
+    <li><a href="#agenda-col" class="nav-cta">Agendar Asesoría</a></li>
   </ul>
 </nav>
 
@@ -411,7 +405,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     <p class="hero-desc">Mi musica suena como una pelicula</p>
     <div class="hero-btns">
       <a href="#musica" class="btn-blue">Escuchar música</a>
-      <a href="#asesoria" class="btn-ghost">Agendar asesoría</a>
+      <a href="#agenda-col" class="btn-ghost">Agendar asesoría</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -459,14 +453,50 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
       <div class="section-eyebrow reveal">Portafolio</div>
       <h2 class="section-title reveal">Discografía</h2>
     </div>
-    <!-- Bandcamp button con logo -->
-    <a href="https://diegoguasp.bandcamp.com" target="_blank" rel="noopener" class="btn-bandcamp reveal">
-      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect width="24" height="24" rx="3" fill="#1DA0C3"/>
-        <path d="M4.5 15.5l5.5-7h10l-5.5 7z" fill="white"/>
-      </svg>
-      Comprar en Bandcamp
-    </a>
+    <div class="music-platforms reveal">
+      <!-- Comprar en -->
+      <div class="platform-group">
+        <span class="platform-group-label">Comprar en:</span>
+        <div class="platform-group-btns">
+          <a href="https://diegoguasp.bandcamp.com" target="_blank" rel="noopener" class="platform-btn">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="24" height="24" rx="3" fill="#1DA0C3"/>
+              <path d="M4.5 15.5l5.5-7h10l-5.5 7z" fill="white"/>
+            </svg>
+            Bandcamp
+          </a>
+        </div>
+      </div>
+      <!-- Escuchar en -->
+      <div class="platform-group">
+        <span class="platform-group-label">Escuchar en:</span>
+        <div class="platform-group-btns">
+          <a href="https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ" target="_blank" rel="noopener" class="platform-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="12" cy="12" r="12" fill="#1DB954"/>
+              <path d="M17.2 10.6c-2.9-1.7-7.6-1.9-10.3-1a.7.7 0 01-.9-.5.7.7 0 01.5-.9c3-.9 8.1-.7 11.3 1.2a.7.7 0 01.2 1 .7.7 0 01-.8.2zm-.1 2.7a.6.6 0 01-.8.2c-2.4-1.5-6.1-1.9-9-1.1a.6.6 0 01-.7-.4.6.6 0 01.4-.7c3.3-.9 7.3-.5 10 1.2a.6.6 0 01.1.8zm-.9 2.6a.5.5 0 01-.7.1c-2.1-1.3-4.8-1.6-7.9-.9a.5.5 0 01-.6-.4.5.5 0 01.4-.6c3.4-.7 6.4-.4 8.7 1a.5.5 0 01.1.8z" fill="white"/>
+            </svg>
+            Spotify
+          </a>
+          <a href="https://music.apple.com/mx/artist/diego-guasp/1601722653" target="_blank" rel="noopener" class="platform-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <defs><linearGradient id="appleG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#FC5C7D"/><stop offset="100%" stop-color="#6A3DE8"/></linearGradient></defs>
+              <rect width="24" height="24" rx="5" fill="url(#appleG)"/>
+              <path d="M15.5 5.5h-4a.5.5 0 00-.5.5v7.3a2.3 2.3 0 10.9 1.8V9h3.1a.5.5 0 00.5-.5V6a.5.5 0 00-.5-.5z" fill="white"/>
+            </svg>
+            Apple Music
+          </a>
+          <a href="https://music.amazon.com.mx/artists/B09PHXPJSR/diego-guasp" target="_blank" rel="noopener" class="platform-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <rect width="24" height="24" rx="3" fill="#232F3E"/>
+              <path d="M5 15.2c3.2 2 7.4 3.1 11.8 2.3-.4.3-1 .6-1.5.8-2.9.9-6 .4-8.5-1.1-.3-.2-.4-.5-.2-.8.2-.3.4-.3.4-.2z" fill="#FF9900"/>
+              <text x="4.5" y="13.5" font-family="Arial" font-weight="700" font-size="6.5" fill="white">music</text>
+            </svg>
+            Amazon Music
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="music-grid reveal">
     <div class="track">
@@ -504,40 +534,6 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     </div>
   </div>
 
-  <!-- Plataformas: sin Bandcamp, con logos SVG -->
-  <div class="platforms-row reveal">
-    <p class="platforms-label">También disponible en</p>
-    <div class="platforms-grid">
-      <a href="https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ" target="_blank" rel="noopener" class="platform-btn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="12" cy="12" r="12" fill="#1DB954"/>
-          <path d="M17.2 10.6c-2.9-1.7-7.6-1.9-10.3-1a.7.7 0 01-.9-.5.7.7 0 01.5-.9c3-.9 8.1-.7 11.3 1.2a.7.7 0 01.2 1 .7.7 0 01-.8.2zm-.1 2.7a.6.6 0 01-.8.2c-2.4-1.5-6.1-1.9-9-1.1a.6.6 0 01-.7-.4.6.6 0 01.4-.7c3.3-.9 7.3-.5 10 1.2a.6.6 0 01.1.8zm-.9 2.6a.5.5 0 01-.7.1c-2.1-1.3-4.8-1.6-7.9-.9a.5.5 0 01-.6-.4.5.5 0 01.4-.6c3.4-.7 6.4-.4 8.7 1a.5.5 0 01.1.8z" fill="white"/>
-        </svg>
-        Spotify
-      </a>
-      <a href="https://music.apple.com/mx/artist/diego-guasp/1601722653" target="_blank" rel="noopener" class="platform-btn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="appleG" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#FC5C7D"/>
-              <stop offset="100%" stop-color="#6A3DE8"/>
-            </linearGradient>
-          </defs>
-          <rect width="24" height="24" rx="5" fill="url(#appleG)"/>
-          <path d="M15.5 5.5h-4a.5.5 0 00-.5.5v7.3a2.3 2.3 0 10.9 1.8V9h3.1a.5.5 0 00.5-.5V6a.5.5 0 00-.5-.5z" fill="white"/>
-        </svg>
-        Apple Music
-      </a>
-      <a href="https://music.amazon.com.mx/artists/B09PHXPJSR/diego-guasp" target="_blank" rel="noopener" class="platform-btn">
-        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <rect width="24" height="24" rx="3" fill="#232F3E"/>
-          <path d="M5 15.2c3.2 2 7.4 3.1 11.8 2.3-.4.3-1 .6-1.5.8-2.9.9-6 .4-8.5-1.1-.3-.2-.4-.5-.2-.8.2-.3.4-.3.4-.2z" fill="#FF9900"/>
-          <text x="4.5" y="13.5" font-family="Arial" font-weight="700" font-size="6.5" fill="white">music</text>
-        </svg>
-        Amazon Music
-      </a>
-    </div>
-  </div>
 </section>
 
 <div class="divider"></div>
@@ -585,7 +581,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     </div>
 
     <!-- Columna derecha: agenda -->
-    <div class="agenda-col">
+    <div class="agenda-col" id="agenda-col">
       <div style="margin-bottom:1.5rem;">
         <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--cream);line-height:1.1;margin-bottom:0.75rem;">Reserva tu <em style="font-style:normal;color:var(--blue);">asesoría.</em></h3>
         <p style="color:var(--subtle);font-size:0.88rem;line-height:1.8;">Selecciona el horario disponible que mejor se te acomode a través de Calendly.</p>
@@ -655,7 +651,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
         <li><a href="#musica">Música</a></li>
         <li><a href="#asesoria">Asesoría</a></li>
         <li><a href="#libreria">Librería</a></li>
-        <li><a href="#asesoria">Agendar</a></li>
+        <li><a href="#agenda-col">Agendar</a></li>
       </ul>
     </div>
     <div class="footer-col">
