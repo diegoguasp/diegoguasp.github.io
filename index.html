@@ -387,7 +387,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   <ul class="nav-links">
     <li><a href="#sobre-mi">Bio</a></li>
     <li><a href="#musica">Mi música</a></li>
-    <li><a href="#asesoria">Servicios Legales</a></li>
+    <li><a href="#servicios-legales">Servicios Legales</a></li>
     <li><a href="#libreria">Librería</a></li>
     <li><a href="#agenda-col" class="nav-cta">Agendar Asesoría</a></li>
   </ul>
@@ -536,14 +536,14 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 
 <!-- LEGAL + AGENDA (unificado, dos columnas) -->
 <section class="legal-agenda" id="servicios-legales">
-  <div class="legal-agenda-top reveal">
-    <div class="section-eyebrow">Servicios Legales</div>
-    <h2 class="section-title">Tu arte,<br><em>protegido.</em></h2>
-    <p style="color:var(--subtle);font-size:0.9rem;line-height:1.8;max-width:580px;">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
-  </div>
   <div class="legal-agenda-cols reveal">
     <!-- Columna izquierda: servicios -->
     <div class="legal-box">
+      <div class="legal-agenda-top reveal">
+        <div class="section-eyebrow">Servicios Legales</div>
+        <h2 class="section-title">Tu arte,<br><em>protegido.</em></h2>
+        <p style="color:var(--subtle);font-size:0.9rem;line-height:1.8;max-width:580px;">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
+      </div>
       <div class="legal-services-list">
         <div class="legal-service-item">
           <div class="legal-service-num">01</div>
@@ -574,13 +574,16 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
           </div>
         </div>
       </div>
-    </div>
+    </div> 
 
     <!-- Columna derecha: agenda -->
-    <div class="agenda-col" id="agenda-col">
-      <div style="margin-bottom:1.5rem;">
-        <h3 style="font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--cream);line-height:1.1;margin-bottom:0.75rem;">Reserva tu <em style="font-style:normal;color:var(--blue);">asesoría.</em></h3>
-        <p style="color:var(--subtle);font-size:0.88rem;line-height:1.8;">Selecciona el horario disponible que mejor se te acomode a través de Calendly.</p>
+    <section class="agenda-col" id="agenda-col">
+      <div class="agenda-header">
+        <div class="section-eyebrow">Agendar Asesoria</div>
+        <div style="margin-bottom:1.5rem;">
+          <h2 class="section-title">Reserva tu<br><em>asesoría.</em></h2>
+          <p style="color:var(--subtle);font-size:0.88rem;line-height:1.8;">Selecciona el horario disponible que mejor se te acomode a través de Calendly.</p>
+        </div>
       </div>
       <div class="calendly-wrap">
         <div class="calendly-icon">◷</div>
@@ -598,7 +601,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </section>
 
