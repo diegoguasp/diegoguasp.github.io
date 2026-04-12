@@ -256,6 +256,11 @@ section { padding: 7rem 3rem; }
 .legal-agenda-cols {
   display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start;
 }
+.legal-column-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 .legal-box { border: 1px solid var(--border); background: var(--bg3); padding: 2.5rem; }
 .legal-services-list { display: flex; flex-direction: column; }
 .legal-service-item {
@@ -269,7 +274,7 @@ section { padding: 7rem 3rem; }
 .legal-service-desc { font-size: 0.87rem; color: var(--muted); line-height: 1.75; }
 
 /* Agenda column */
-.agenda-col { display: flex; flex-direction: column; gap: 0; padding: 0; scroll-margin-top: 5rem; }
+.agenda-col { display: flex; flex-direction: column; gap: 0; padding: 0; }
 .calendly-wrap {
   background: var(--bg3); border: 1px solid var(--border);
   padding: 2.5rem 2rem;
@@ -536,41 +541,43 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 
 <!-- LEGAL + AGENDA (unificado, dos columnas) -->
 <section class="legal-agenda" id="servicios-legales">
-  <div class="legal-agenda-top reveal">
-    <div class="section-eyebrow">Servicios Legales</div>
-    <h2 class="section-title">Tu arte,<br><em>protegido.</em></h2>
-    <p style="color:var(--subtle);font-size:0.9rem;line-height:1.8;max-width:580px;">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
-  </div>
   <div class="legal-agenda-cols reveal">
     <!-- Columna izquierda: servicios -->
-    <div class="legal-box">
-      <div class="legal-services-list">
-        <div class="legal-service-item">
-          <div class="legal-service-num">01</div>
-          <div>
-            <div class="legal-service-name">Asesorías Legales</div>
-            <div class="legal-service-desc">Guío a artistas, bandas y músicos a entender dónde están parados legalmente y qué necesitan hacer según su situación particular. Cada caso es único y lo atiendo de forma personalizada.</div>
+    <div class="legal-column-left">
+      <div class="legal-agenda-top reveal">
+        <div class="section-eyebrow">Servicios Legales</div>
+        <h2 class="section-title">Tu arte,<br><em>protegido.</em></h2>
+        <p style="color:var(--subtle);font-size:0.9rem;line-height:1.8;max-width:580px;">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
+      </div>
+      <div class="legal-box">
+        <div class="legal-services-list">
+          <div class="legal-service-item">
+            <div class="legal-service-num">01</div>
+            <div>
+              <div class="legal-service-name">Asesorías Legales</div>
+              <div class="legal-service-desc">Guío a artistas, bandas y músicos a entender dónde están parados legalmente y qué necesitan hacer según su situación particular. Cada caso es único y lo atiendo de forma personalizada.</div>
+            </div>
           </div>
-        </div>
-        <div class="legal-service-item">
-          <div class="legal-service-num">02</div>
-          <div>
-            <div class="legal-service-name">Registro de Canciones y Fonogramas</div>
-            <div class="legal-service-desc">Llevo a cabo la protección legal de los derechos de autor de obras y grabaciones ante los organismos correspondientes.</div>
+          <div class="legal-service-item">
+            <div class="legal-service-num">02</div>
+            <div>
+              <div class="legal-service-name">Registro de Canciones y Fonogramas</div>
+              <div class="legal-service-desc">Llevo a cabo la protección legal de los derechos de autor de obras y grabaciones ante los organismos correspondientes.</div>
+            </div>
           </div>
-        </div>
-        <div class="legal-service-item">
-          <div class="legal-service-num">03</div>
-          <div>
-            <div class="legal-service-name">Afiliación a Sociedades de Gestión</div>
-            <div class="legal-service-desc">Apoyo a autores y compositores en el proceso de afiliación a las sociedades de gestión colectiva para que puedan cobrar todas las regalías posibles.</div>
+          <div class="legal-service-item">
+            <div class="legal-service-num">03</div>
+            <div>
+              <div class="legal-service-name">Afiliación a Sociedades de Gestión</div>
+              <div class="legal-service-desc">Apoyo a autores y compositores en el proceso de afiliación a las sociedades de gestión colectiva para que puedan cobrar todas las regalías posibles.</div>
+            </div>
           </div>
-        </div>
-        <div class="legal-service-item">
-          <div class="legal-service-num">04</div>
-          <div>
-            <div class="legal-service-name">Registro de Marcas, Contratos y Licencias</div>
-            <div class="legal-service-desc">Registro marcas y redacto licencias de sincronización o cualquier contrato necesario en la industria musical.</div>
+          <div class="legal-service-item">
+            <div class="legal-service-num">04</div>
+            <div>
+              <div class="legal-service-name">Registro de Marcas, Contratos y Licencias</div>
+              <div class="legal-service-desc">Registro marcas y redacto licencias de sincronización o cualquier contrato necesario en la industria musical.</div>
+            </div>
           </div>
         </div>
       </div>
