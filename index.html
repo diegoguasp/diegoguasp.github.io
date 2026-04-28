@@ -77,6 +77,33 @@ nav.scrolled {
 }
 .nav-cta:hover { background: var(--blue) !important; color: #fff !important; }
 
+.nav-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 0.35rem;
+  margin-left: 1rem;
+}
+.nav-toggle span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text);
+  margin: 5px 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+.nav-links.open {
+  opacity: 1;
+  visibility: visible;
+  transform: scaleY(1);
+}
+.nav-links.close {
+  opacity: 0;
+  visibility: hidden;
+  transform: scaleY(0);
+}
+
 /* ─── HERO ─── */
 .hero {
   min-height: 100vh;
@@ -176,6 +203,13 @@ section { padding: 7rem 3rem; }
 }
 .section-title em { font-style: normal; color: var(--blue); }
 .section-sub { color: var(--subtle); font-size: 1rem; line-height: 1.8; max-width: 520px; margin-bottom: 3.5rem; }
+.section-text { color: var(--subtle); font-size: 0.95rem; line-height: 1.8; max-width: 580px; margin-bottom: 0; }
+.agenda-intro { margin-bottom: 1.5rem; }
+.sounds-card {
+  border: 1px solid var(--border);
+  padding: 2.5rem;
+  background: var(--bg2);
+}
 .divider { width: 100%; height: 1px; background: var(--border); }
 
 /* ─── ABOUT ─── */
@@ -363,12 +397,17 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  nav { padding: 1.2rem 1.5rem; }
+  nav { padding: 1.2rem 1.5rem; flex-wrap: wrap; }
   nav.scrolled { padding: 0.9rem 1.5rem; }
-  .nav-links { gap: 1rem; }
+  .nav-links { gap: 0; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; right: 0; background: rgba(198,200,214,0.97); transform-origin: top; transform: scaleY(0); transition: transform 0.25s ease, opacity 0.25s ease; opacity: 0; visibility: hidden; padding: 1rem 1.5rem; }
+  .nav-links.open { transform: scaleY(1); opacity: 1; visibility: visible; }
+  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-links li { width: 100%; }
+  .nav-links a { display: block; width: 100%; padding: 0.8rem 0; }
   section { padding: 5rem 1.5rem; }
   .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
-  .hero-visual { display: none; }
+  .hero-visual { display: flex; margin-top: 2rem; justify-content: center; }
+  .hero-frame { max-width: 320px; }
   .about-inner, .sounds-inner, .legal-agenda-cols { grid-template-columns: 1fr; gap: 3rem; }
   .music-grid { grid-template-columns: 1fr; }
   .music-header { flex-direction: column; align-items: flex-start; }
@@ -378,10 +417,13 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   .footer-top { grid-template-columns: 1fr; gap: 2rem; }
 }
 @media (max-width: 600px) {
-  .hero-title { font-size: 2.8rem; }
+  .hero-title { font-size: 2.4rem; }
+  .section-eyebrow { font-size: 0.6rem; }
+  .section-sub, .section-text, .sounds-card p, .agenda-intro p { font-size: 0.92rem; }
   .legal-box { padding: 1.5rem; }
   .agenda-features { grid-template-columns: 1fr; }
   .platform-group-btns { flex-wrap: wrap; }
+  .hero { padding-top: 6rem; }
 }
 </style>
 </head>
@@ -390,7 +432,12 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">Diego<span> Guasp</span></a>
-  <ul class="nav-links">
+  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-navigation">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+  <ul class="nav-links" id="main-navigation">
     <li><a href="#sobre-mi">Bio</a></li>
     <li><a href="#musica">Mi música</a></li>
     <li><a href="#servicios-legales">Servicios Legales</a></li>
@@ -417,7 +464,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   <div class="hero-visual">
     <div class="hero-frame">
       <div class="hero-photo-placeholder">
-        <img src="/Imagenes/Logo.JPG" alt="Diego Guasp Logo">
+        <img src="Imagenes/Logo.JPG" alt="Diego Guasp Logo">
       </div>
     </div>
   </div>
@@ -445,7 +492,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     </div>
     <div class="about-img-wrap reveal">
       <div class="about-img">
-        <img src="/Imagenes/Foto.JPG" alt="Diego Guasp Photo">
+        <img src="Imagenes/Foto.JPG" alt="Diego Guasp Photo">
       </div>
     </div>
   </div>
@@ -548,7 +595,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
       <div class="legal-agenda-top reveal">
         <div class="section-eyebrow">Servicios Legales</div>
         <h2 class="section-title">Tu arte,<br><em>protegido.</em></h2>
-        <p style="color:var(--subtle);font-size:0.9rem;line-height:1.8;max-width:580px;">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
+        <p class="section-text">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
       </div>
       <div class="legal-box">
         <div class="legal-services-list">
@@ -588,9 +635,9 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     <section class="agenda-col" id="agenda-col">
       <div class="agenda-header">
         <div class="section-eyebrow">Agendar Asesoria</div>
-        <div style="margin-bottom:1.5rem;">
+        <div class="agenda-intro">
           <h2 class="section-title">Reserva tu<br><em>asesoría.</em></h2>
-          <p style="color:var(--subtle);font-size:0.88rem;line-height:1.8;">Selecciona el horario disponible que mejor se te acomode a través de Calendly.</p>
+          <p class="section-text">Selecciona el horario disponible que mejor se te acomode a través de Calendly.</p>
         </div>
       </div>
       <div class="calendly-wrap">
@@ -628,7 +675,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
       </div>
     </div>
     <div class="reveal">
-      <div style="border:1px solid var(--border);padding:2.5rem;background:var(--bg2);">
+      <div class="sounds-card">
         <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--blue);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem;">Acceso gratuito</p>
         <h4 style="font-family:var(--font-display);font-size:1.35rem;font-weight:800;color:var(--cream);margin-bottom:0.5rem;">Déjame tus datos</h4>
         <p style="color:var(--muted);font-size:0.82rem;margin-bottom:1.75rem;line-height:1.7;">Comparte tu información y te envío el pack directo a tu correo. Sin spam, solo contenido de valor para músicos.</p>
@@ -715,6 +762,22 @@ const modal = document.getElementById('calendlyModal');
 document.getElementById('openCalendly').addEventListener('click', () => { modal.style.display = 'flex'; });
 document.getElementById('closeCalendly').addEventListener('click', () => { modal.style.display = 'none'; });
 modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+
+const navToggle = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+navToggle.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  navLinks.classList.toggle('close', !isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+});
+
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    navLinks.classList.add('close');
+    navToggle.setAttribute('aria-expanded', 'false');
+  });
+});
 </script>
 </body>
 </html>
