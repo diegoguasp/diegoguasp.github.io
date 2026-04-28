@@ -48,6 +48,8 @@ nav {
   padding: 1.5rem 3rem;
   border-bottom: 1px solid transparent;
   transition: background 0.4s, border-color 0.4s, padding 0.3s;
+  background: rgba(198,200,214,0.6);
+  backdrop-filter: blur(10px);
 }
 nav.scrolled {
   background: rgba(198,200,214,0.96);
@@ -69,6 +71,7 @@ nav.scrolled {
   transition: color 0.2s;
 }
 .nav-links a:hover { color: var(--blue); }
+.nav-links li { min-width: fit-content; }
 .nav-cta {
   padding: 0.5rem 1.4rem;
   border: 1px solid var(--blue);
@@ -370,13 +373,14 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  nav { padding: 1.2rem 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  nav { padding: 1.2rem 1.5rem; flex-wrap: wrap; gap: 0.75rem; background: rgba(198,200,214,0.96); }
   nav.scrolled { padding: 0.9rem 1.5rem; }
-  .nav-links { gap: 0.75rem; flex-direction: column; width: 100%; position: static; background: transparent; transform: none; opacity: 1; visibility: visible; padding: 0; }
-  .nav-links li { width: 100%; }
-  .nav-links a { display: block; width: 100%; padding: 0.65rem 0; }
+  .nav-links { gap: 0.75rem; flex-direction: row; width: 100%; position: static; background: transparent; transform: none; opacity: 1; visibility: visible; padding: 0; justify-content: center; align-items: center; }
+  .nav-links li { width: auto; }
+  .nav-links a { display: inline-flex; width: auto; padding: 0.55rem 0.5rem; }
+  .nav-links { row-gap: 0.75rem; }
   section { padding: 5rem 1.5rem; }
-  .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
+  .hero { grid-template-columns: 1fr; padding: 8rem 1.5rem 4rem; }
   .hero-visual { display: flex; margin-top: 2rem; justify-content: center; }
   .hero-frame { max-width: 320px; }
   .about-inner, .sounds-inner, .legal-agenda-cols { grid-template-columns: 1fr; gap: 3rem; }
