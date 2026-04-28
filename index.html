@@ -61,7 +61,7 @@ nav.scrolled {
   color: var(--cream); text-decoration: none;
 }
 .nav-logo span { color: var(--blue); }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
 .nav-links a {
   color: var(--muted); text-decoration: none;
   font-family: var(--font-mono); font-size: 0.7rem;
@@ -76,33 +76,6 @@ nav.scrolled {
   transition: background 0.2s, color 0.2s !important;
 }
 .nav-cta:hover { background: var(--blue) !important; color: #fff !important; }
-
-.nav-toggle {
-  display: none;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  padding: 0.35rem;
-  margin-left: 1rem;
-}
-.nav-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--text);
-  margin: 5px 0;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-.nav-links.open {
-  opacity: 1;
-  visibility: visible;
-  transform: scaleY(1);
-}
-.nav-links.close {
-  opacity: 0;
-  visibility: hidden;
-  transform: scaleY(0);
-}
 
 /* ─── HERO ─── */
 .hero {
@@ -397,13 +370,11 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
-  nav { padding: 1.2rem 1.5rem; flex-wrap: wrap; }
+  nav { padding: 1.2rem 1.5rem; flex-wrap: wrap; gap: 1rem; }
   nav.scrolled { padding: 0.9rem 1.5rem; }
-  .nav-links { gap: 0; flex-direction: column; width: 100%; position: absolute; top: 100%; left: 0; right: 0; background: rgba(198,200,214,0.97); transform-origin: top; transform: scaleY(0); transition: transform 0.25s ease, opacity 0.25s ease; opacity: 0; visibility: hidden; padding: 1rem 1.5rem; }
-  .nav-links.open { transform: scaleY(1); opacity: 1; visibility: visible; }
-  .nav-toggle { display: inline-flex; align-items: center; justify-content: center; }
+  .nav-links { gap: 0.75rem; flex-direction: column; width: 100%; position: static; background: transparent; transform: none; opacity: 1; visibility: visible; padding: 0; }
   .nav-links li { width: 100%; }
-  .nav-links a { display: block; width: 100%; padding: 0.8rem 0; }
+  .nav-links a { display: block; width: 100%; padding: 0.65rem 0; }
   section { padding: 5rem 1.5rem; }
   .hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 4rem; }
   .hero-visual { display: flex; margin-top: 2rem; justify-content: center; }
@@ -432,11 +403,6 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 <!-- NAV -->
 <nav id="navbar">
   <a href="#" class="nav-logo">Diego<span> Guasp</span></a>
-  <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="main-navigation">
-    <span></span>
-    <span></span>
-    <span></span>
-  </button>
   <ul class="nav-links" id="main-navigation">
     <li><a href="#sobre-mi">Bio</a></li>
     <li><a href="#musica">Mi música</a></li>
@@ -762,22 +728,6 @@ const modal = document.getElementById('calendlyModal');
 document.getElementById('openCalendly').addEventListener('click', () => { modal.style.display = 'flex'; });
 document.getElementById('closeCalendly').addEventListener('click', () => { modal.style.display = 'none'; });
 modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
-
-const navToggle = document.querySelector('.nav-toggle');
-const navLinks = document.querySelector('.nav-links');
-navToggle.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('open');
-  navLinks.classList.toggle('close', !isOpen);
-  navToggle.setAttribute('aria-expanded', String(isOpen));
-});
-
-document.querySelectorAll('.nav-links a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    navLinks.classList.add('close');
-    navToggle.setAttribute('aria-expanded', 'false');
-  });
-});
 </script>
 </body>
 </html>
