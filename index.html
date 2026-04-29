@@ -109,7 +109,7 @@ nav.scrolled {
   font-weight: 800; line-height: 1.0; margin-bottom: 1.5rem;
   opacity: 0; animation: fadeUp 0.8s 0.2s forwards;
 }
-.hero-title .name { display: block; color: var(--cream); }
+.hero-title .name { display: block; color: var(--cream); margin-bottom: inherit;}
 .hero-title .role {
   display: block; font-weight: 400;
   color: var(--blue); font-size: 0.55em; margin-top: 0.4em;
@@ -411,7 +411,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   <a href="#" class="nav-logo">Diego<span> Guasp</span></a>
   <ul class="nav-links" id="main-navigation">
     <li><a href="#sobre-mi">Bio</a></li>
-    <li><a href="#musica">Mi música</a></li>
+    <li><a href="#musica">Música</a></li>
     <li><a href="#servicios-legales">Servicios Legales</a></li>
     <li><a href="#libreria">Librería</a></li>
     <li><a href="#agenda-col" class="nav-cta">Agendar Asesoría</a></li>
@@ -425,9 +425,9 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   <div class="hero-content">
     <h1 class="hero-title">
       <span class="name">Diego Guasp</span>
-      <span class="role">Productor Musical · Asesor Legal Musical</span>
+      <span class="role">Productor Musical ·</span>
+      <span class="role">Asesor Legal Musical</span>
     </h1>
-    <p class="hero-desc">Mi musica suena como una pelicula</p>
     <div class="hero-btns">
       <a href="#musica" class="btn-blue">Escuchar música</a>
       <a href="#agenda-col" class="btn-ghost">Agendar asesoría</a>
@@ -436,7 +436,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   <div class="hero-visual">
     <div class="hero-frame">
       <div class="hero-photo-placeholder">
-        <img src="Imagenes/Logo.JPG" alt="Diego Guasp Logo">
+        <img src="Imagenes/Foto.JPG" alt="Diego Guasp Foto">
       </div>
     </div>
   </div>
@@ -462,11 +462,6 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
         <span class="tag">Royalties</span>
       </div>
     </div>
-    <div class="about-img-wrap reveal">
-      <div class="about-img">
-        <img src="Imagenes/Foto.JPG" alt="Diego Guasp Photo">
-      </div>
-    </div>
   </div>
 </section>
 
@@ -476,6 +471,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     <div>
       <div class="section-eyebrow reveal">Portafolio</div>
       <h2 class="section-title reveal">Discografía</h2>
+      <p class="hero-desc">Mi musica suena como una pelicula</p>
     </div>
     <div class="music-platforms reveal">
       <!-- Comprar en -->
@@ -517,6 +513,14 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
               <text x="4.5" y="13.5" font-family="Arial" font-weight="700" font-size="6.5" fill="white">music</text>
             </svg>
             Amazon Music
+          </a>
+          <a href="https://tidal.com/artist/30819581" target="_blank" rel="noopener" class="platform-btn">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <rect width="24" height="24" rx="3" fill="#232F3E"/>
+              <path d="M5 15.2c3.2 2 7.4 3.1 11.8 2.3-.4.3-1 .6-1.5.8-2.9.9-6 .4-8.5-1.1-.3-.2-.4-.5-.2-.8.2-.3.4-.3.4-.2z" fill="#FF9900"/>
+              <text x="4.5" y="13.5" font-family="Arial" font-weight="700" font-size="6.5" fill="white">music</text>
+            </svg>
+            Tidal
           </a>
         </div>
       </div>
@@ -650,7 +654,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
       <div class="sounds-card">
         <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--blue);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem;">Acceso gratuito</p>
         <h4 style="font-family:var(--font-display);font-size:1.35rem;font-weight:800;color:var(--cream);margin-bottom:0.5rem;">Déjame tus datos</h4>
-        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:1.75rem;line-height:1.7;">Comparte tu información y te envío el pack directo a tu correo. Sin spam, solo contenido de valor para músicos.</p>
+        <p style="color:var(--muted);font-size:0.82rem;margin-bottom:1.75rem;line-height:1.7;">Comparte tu información y te envío el pack directo a tu correo.</p>
         <div class="lead-form">
           <input type="text" id="leadName" placeholder="Tu nombre" autocomplete="off">
           <input type="email" id="leadEmail" placeholder="Correo electrónico" autocomplete="off">
@@ -687,6 +691,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
         <li><a href="https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ" target="_blank" rel="noopener">Spotify</a></li>
         <li><a href="https://music.apple.com/mx/artist/diego-guasp/1601722653" target="_blank" rel="noopener">Apple Music</a></li>
         <li><a href="https://music.amazon.com.mx/artists/B09PHXPJSR/diego-guasp" target="_blank" rel="noopener">Amazon Music</a></li>
+        <li><a href="https://tidal.com/artist/30819581" target="_blank" rel="noopener">Tidal</a></li>
       </ul>
     </div>
   </div>
