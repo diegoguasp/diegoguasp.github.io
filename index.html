@@ -58,10 +58,12 @@ nav.scrolled {
   padding: 1rem 3rem;
 }
 .nav-logo {
+  display: flex; align-items: center; gap: 0.65rem;
   font-family: var(--font-display);
   font-size: 1.15rem; font-weight: 800; letter-spacing: 0.01em;
   color: var(--cream); text-decoration: none;
 }
+.nav-logo img { width: 32px; height: 32px; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
 .nav-logo span { color: var(--blue); }
 .nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
 .nav-links a {
@@ -85,7 +87,7 @@ nav.scrolled {
   min-height: 100vh;
   display: grid; grid-template-columns: 1fr 1fr;
   align-items: center;
-  padding: 8rem 3rem 4rem;
+  padding: 5rem 3rem 3rem;
   position: relative; overflow: hidden; gap: 4rem;
 }
 .hero-bg {
@@ -149,17 +151,18 @@ nav.scrolled {
   display: flex; justify-content: center; align-items: center;
   opacity: 0; animation: fadeIn 1.2s 0.3s forwards;
 }
-.hero-frame { position: relative; display: inline-block; max-width: 400px; width: 100%; }
+.hero-frame { position: relative; display: inline-block; max-width: 340px; width: 100%; }
 .hero-photo-placeholder {
-  width: 100%; background: var(--bg3); border: 1px solid var(--border);
+  width: 100%; aspect-ratio: 1;
+  background: var(--bg3); border: 1px solid var(--border);
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  overflow: hidden;
+  overflow: hidden; border-radius: 50%;
 }
-.hero-photo-placeholder img { display: block; width: 100%; height: auto; object-fit: cover; }
+.hero-photo-placeholder img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .hero-frame-deco {
   position: absolute; bottom: -14px; right: -14px;
   width: 100%; height: 100%; border: 1px solid var(--blue);
-  opacity: 0.2; z-index: -1;
+  opacity: 0.2; z-index: -1; border-radius: 50%;
 }
 
 /* ─── SHARED ─── */
@@ -188,9 +191,14 @@ section { padding: 7rem 3rem; scroll-margin-top: -7rem; }
 }
 .divider { width: 100%; height: 1px; background: var(--border); }
 
-/* ─── ABOUT ─── */
 .about { background: var(--bg2); }
-.about-inner { display: grid; grid-template-columns: 1.1fr 1fr; gap: 6rem; align-items: center; }
+.about-inner { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.about-img-wrap { display: none; }
+.about-inner .section-title {
+  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  font-weight: 400; color: var(--subtle); line-height: 1.7;
+  margin-bottom: 0; max-width: 900px;
+}
 .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
 .tag {
   padding: 0.3rem 0.85rem; border: 1px solid var(--border);
@@ -199,16 +207,8 @@ section { padding: 7rem 3rem; scroll-margin-top: -7rem; }
   transition: border-color 0.2s, color 0.2s;
 }
 .tag:hover { border-color: var(--blue); color: var(--blue); }
-.about-img-wrap { position: relative; }
-.about-img {
-  width: 100%; background: var(--bg3); border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  overflow: hidden;
-}
-.about-img img { display: block; width: 100%; height: auto; object-fit: cover; }
 
 /* ─── MUSIC ─── */
-.music { background: var(--bg); }
 .music-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); }
 .track {
   background: var(--bg); padding: 2rem;
@@ -371,19 +371,51 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ─── RESPONSIVE ─── */
+/* ─── MOBILE NAV HAMBURGER ─── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  width: 36px; height: 36px; cursor: pointer;
+  background: transparent; border: none; padding: 4px;
+  flex-shrink: 0;
+}
+.nav-hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--cream); border-radius: 2px;
+  transition: transform 0.25s, opacity 0.2s;
+}
+.nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
 @media (max-width: 900px) {
-  nav { padding: 1rem 1rem; flex-wrap: wrap; gap: 0.5rem; background: rgba(198,200,214,0.96); }
-  nav.scrolled { padding: 0.8rem 1rem; }
-  .nav-links { gap: 0.5rem; flex-direction: row; width: 100%; position: static; background: transparent; transform: none; opacity: 1; visibility: visible; padding: 0; justify-content: center; align-items: center; }
-  .nav-links li { width: auto; min-width: 0; }
-  .nav-links a { display: inline-flex; width: auto; padding: 0.45rem 0.5rem; font-size: 0.65rem; }
-  .nav-links { row-gap: 0.5rem; }
-  .nav-cta { padding: 0.45rem 1rem; }
+  nav { padding: 1rem 1.5rem; flex-wrap: nowrap; }
+  nav.scrolled { padding: 0.8rem 1.5rem; }
+  .nav-hamburger { display: flex; }
+  .nav-links {
+    display: none; flex-direction: column; gap: 0;
+    position: fixed; top: 0; left: 0; right: 0;
+    background: rgba(198,200,214,0.97);
+    backdrop-filter: blur(20px);
+    padding: 5rem 2rem 2rem;
+    z-index: 99;
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-links.open { display: flex; }
+  .nav-links li { width: 100%; border-bottom: 1px solid var(--border); }
+  .nav-links li:last-child { border-bottom: none; margin-top: 1rem; }
+  .nav-links a { display: block; padding: 0.9rem 0; font-size: 0.75rem; color: var(--subtle); }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-cta { display: inline-block !important; padding: 0.65rem 1.4rem; width: fit-content; }
+  .nav-overlay {
+    display: none; position: fixed; inset: 0; z-index: 98;
+    background: rgba(26,28,46,0.35);
+  }
+  .nav-overlay.open { display: block; }
   section { padding: 5rem 1.2rem; scroll-margin-top: -2rem; }
-  .hero { grid-template-columns: 1fr; padding: 8rem 1.2rem 4rem; }
+  .hero { grid-template-columns: 1fr; padding: 7rem 1.2rem 3rem; }
   .hero-visual { display: flex; margin-top: 2rem; justify-content: center; }
-  .hero-frame { max-width: 320px; }
+  .hero-frame { max-width: 260px; }
   .about-inner, .sounds-inner, .legal-agenda-cols { grid-template-columns: 1fr; gap: 3rem; }
   .music-grid { grid-template-columns: 1fr; }
   .music-header { flex-direction: column; align-items: flex-start; }
@@ -400,15 +432,22 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   .legal-box { padding: 1.5rem; }
   .agenda-features { grid-template-columns: 1fr; }
   .platform-group-btns { flex-wrap: wrap; }
-  .hero { padding-top: 10rem; }
+  .hero { padding-top: 6rem; }
 }
 </style>
 </head>
 <body>
 
 <!-- NAV -->
+<div class="nav-overlay" id="navOverlay"></div>
 <nav id="navbar">
-  <a href="#" class="nav-logo">Diego<span> Guasp</span></a>
+  <a href="#" class="nav-logo">
+    <img src="Imagenes/Logo.JPG" alt="Diego Guasp Logo">
+    Diego<span> Guasp</span>
+  </a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
   <ul class="nav-links" id="main-navigation">
     <li><a href="#sobre-mi">Bio</a></li>
     <li><a href="#musica">Música</a></li>
@@ -447,8 +486,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   <div class="about-inner">
     <div>
       <div class="section-eyebrow reveal">Sobre mí</div>
-      <h2 class="section-title reveal">Música que <em>se siente</em>,<br>derecho que protege.</h2>
-      <p class="section-sub reveal">
+      <p class="section-title reveal">
         Diego Guasp es un productor musical, ingeniero en audio y diseñador sonoro de películas, originario de Guadalajara, México.
         Además, es asesor de artistas y productores musicales en todo lo relacionado con derechos de autor, regalias, contratos y marcas.
       </p>
@@ -721,6 +759,23 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 <script>
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+
+// Hamburger menu
+const hamburger = document.getElementById('navHamburger');
+const navLinks = document.getElementById('main-navigation');
+const overlay = document.getElementById('navOverlay');
+function closeMenu() {
+  hamburger.classList.remove('open');
+  navLinks.classList.remove('open');
+  overlay.classList.remove('open');
+}
+hamburger.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  hamburger.classList.toggle('open', isOpen);
+  overlay.classList.toggle('open', isOpen);
+});
+overlay.addEventListener('click', closeMenu);
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
