@@ -127,7 +127,7 @@ nav.scrolled {
   opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
 }
 .btn-blue {
-  padding: 0.85rem 2rem; background: var(--blue); color: #fff;
+  padding: 0.85rem 1rem; background: var(--blue); color: #fff;
   font-family: var(--font-mono); font-size: 0.73rem; font-weight: 500;
   letter-spacing: 0.1em; text-transform: uppercase;
   border: none; border-radius: 3px;
@@ -136,7 +136,7 @@ nav.scrolled {
 }
 .btn-blue:hover { background: var(--blue2); transform: translateY(-2px); }
 .btn-ghost {
-  padding: 0.85rem 2rem; background: transparent; color: var(--subtle);
+  padding: 0.85rem 1rem; background: transparent; color: var(--subtle);
   font-family: var(--font-mono); font-size: 0.73rem;
   letter-spacing: 0.1em; text-transform: uppercase;
   border: 1px solid rgba(40,45,80,0.2); border-radius: 3px;
@@ -195,9 +195,9 @@ section { padding: 7rem 3rem; scroll-margin-top: -7rem; }
 .about-inner { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 .about-img-wrap { display: none; }
 .about-inner .section-title {
-  font-size: clamp(1.2rem, 2.2vw, 1.75rem);
+  font-size: clamp(1.5rem, 2.2vw, 1.75rem);
   font-weight: 400; color: var(--subtle); line-height: 1.7;
-  margin-bottom: 0; max-width: 900px;
+  margin-bottom: 0; text-align: justify;
 }
 .about-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem; }
 .tag {
@@ -417,12 +417,13 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     display: flex; 
     flex-direction: column; 
     padding: 7rem 1.2rem 3rem; 
+    gap: 2rem;
   }
   .hero-content { 
     order: 2; 
     text-align: center; 
   }
-  .hero-btns { display: block; }
+  .hero-btns { display: block; margin-top: 2rem;}
   .hero-visual { 
     order: 1; 
     display: flex; 
@@ -431,7 +432,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     justify-content: center; 
   }
   .hero-frame { max-width: 260px; }
-  .about-inner, .sounds-inner, .legal-agenda-cols { grid-template-columns: 1fr; gap: 3rem; }
+  .about-inner, .sounds-inner, .legal-agenda-cols { grid-template-columns: 1fr; gap: 0rem; }
   .music-grid { grid-template-columns: 1fr; }
   .music-header { flex-direction: column; align-items: flex-start; }
   .music-platforms { flex-direction: column; align-items: flex-start; gap: 1rem; }
