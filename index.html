@@ -218,8 +218,12 @@ section { padding: 7rem 3rem; scroll-margin-top: -7rem; }
   content: ''; position: absolute; top: 0; left: 0;
   width: 3px; height: 0; background: var(--blue); transition: height 0.35s;
 }
-.track:hover { background: var(--bg2); }
-.track:hover::before { height: 100%; }
+@media (hover: hover) {
+  .track:hover { background: var(--bg2); }
+  .track:hover::before { height: 100%; }
+}
+.track.touched { background: var(--bg2); }
+.track.touched::before { height: 100%; }
 .track-num { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 1.25rem; }
 .track-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--cream); margin-bottom: 0.3rem; }
 .track-year { font-family: var(--font-mono); font-size: 0.65rem; color: var(--blue); margin-bottom: 1rem; }
@@ -259,6 +263,34 @@ section { padding: 7rem 3rem; scroll-margin-top: -7rem; }
 }
 .platform-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--bg2); transform: translateY(-1px); }
 .platform-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+/* ─── SOUND DESIGN SUBSECTION ─── */
+.sound-design { margin-top: 1rem; }
+.sound-design-cols {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+  align-items: center; margin-top: 1.5rem;
+}
+.sound-design-left { display: flex; flex-direction: column; gap: 1.5rem; justify-content: center; }
+.sound-design-desc { font-size: 0.9rem; color: var(--subtle); line-height: 1.8; max-width: 320px; }
+.platform-btn--lg {
+  padding: 0.85rem 1.6rem !important;
+  font-size: 0.8rem !important;
+  gap: 0.7rem !important;
+}
+.platform-btn--lg svg { width: 22px !important; height: 22px !important; }
+.sound-design-right { display: flex; flex-direction: column; gap: 0.75rem; }
+.sound-design-video-label {
+  font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted);
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+.video-embed {
+  position: relative; width: 100%; padding-bottom: 56.25%;
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  background: var(--bg3);
+}
+.video-embed iframe {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0;
+}
 
 /* ─── LEGAL + AGENDA ─── */
 .legal-agenda { background: var(--bg2); }
@@ -435,6 +467,8 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   .about-inner, .sounds-inner, .legal-agenda-cols { grid-template-columns: 1fr; gap: 0rem; }
   .music-grid { grid-template-columns: 1fr; }
   .music-header { flex-direction: column; align-items: flex-start; }
+  .sound-design-cols { grid-template-columns: 1fr; gap: 2rem; }
+  .sound-design-desc { max-width: 100%; }
   .music-platforms { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .platform-group { padding: 0; }
   .platform-group + .platform-group { border-left: none; border-top: 1px solid var(--border); padding-top: 1rem; }
@@ -616,6 +650,36 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     </div>
   </div>
 
+  <!-- Diseño Sonoro -->
+  <div class="sound-design reveal">
+    <div class="section-eyebrow" style="margin-top:3.5rem;">Diseño Sonoro</div>
+    <div class="sound-design-cols">
+      <!-- Columna izquierda: IMDb -->
+      <div class="sound-design-left">
+        <p class="sound-design-desc">Trabajo en diseño sonoro y scoring para cine y medios audiovisuales. Puedes ver mi filmografía completa en IMDb.</p>
+        <a href="https://m.imdb.com/name/nm13882269/" target="_blank" rel="noopener" class="platform-btn platform-btn--lg">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="22" height="22">
+            <rect width="24" height="24" rx="4" fill="#F5C518"/>
+            <text x="3" y="17" font-family="Arial" font-weight="900" font-size="8.5" fill="#000000">IMDb</text>
+          </svg>
+          Ver en IMDb
+        </a>
+      </div>
+      <!-- Columna derecha: YouTube embed -->
+      <div class="sound-design-right">
+        <p class="sound-design-video-label">Mezcla Trailers</p>
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube.com/embed/F0hn9O6EFtk"
+            title="Mezcla Trailers — Diego Guasp"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <div class="divider"></div>
@@ -768,7 +832,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
       <h3 style="font-family:var(--font-display);font-size:1rem;color:var(--cream);font-weight:700;">Reservar asesoría</h3>
       <button id="closeCalendly" style="background:transparent;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;line-height:1;">×</button>
     </div>
-    <div><iframe src="https://calendly.com/diegoguasp/asesoria-legal?embed_domain=diegoguasp.github.io&embed_type=Inline" title="Calendly" allowfullscreen style="width:100%;height:70vh;border:0;"></iframe></div>
+    <div><iframe id="calendlyIframe" src="https://calendly.com/diegoguasp/asesoria-legal?embed_domain=diegoguasp.github.io&embed_type=Inline" title="Calendly" allowfullscreen style="width:100%;height:70vh;border:0;"></iframe></div>
   </div>
 </div>
 
@@ -793,6 +857,12 @@ hamburger.addEventListener('click', () => {
 overlay.addEventListener('click', closeMenu);
 navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
 
+// Track touch feedback for mobile
+document.querySelectorAll('.track').forEach(track => {
+  track.addEventListener('touchstart', () => track.classList.add('touched'), { passive: true });
+  track.addEventListener('touchend', () => setTimeout(() => track.classList.remove('touched'), 400));
+});
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.1 });
@@ -806,13 +876,39 @@ function handleLead() {
   btn.textContent = '¡Listo! Revisa tu correo →';
   btn.style.background = '#3a7a3a';
   btn.disabled = true;
+  // Clear inputs back to empty
+  document.getElementById('leadName').value = '';
+  document.getElementById('leadEmail').value = '';
+  document.getElementById('leadRole').value = '';
   console.log('Lead:', { name, email, role: document.getElementById('leadRole').value });
 }
 
+// Calendly modal
 const modal = document.getElementById('calendlyModal');
-document.getElementById('openCalendly').addEventListener('click', () => { modal.style.display = 'flex'; });
-document.getElementById('closeCalendly').addEventListener('click', () => { modal.style.display = 'none'; });
-modal.addEventListener('click', e => { if (e.target === modal) modal.style.display = 'none'; });
+const calendlyIframe = document.getElementById('calendlyIframe');
+const CALENDLY_URL = 'https://calendly.com/diegoguasp/asesoria-legal?embed_domain=diegoguasp.github.io&embed_type=Inline';
+
+function openCalendlyModal() {
+  // Always reload the iframe fresh so prior booking state is cleared
+  calendlyIframe.src = '';
+  requestAnimationFrame(() => { calendlyIframe.src = CALENDLY_URL; });
+  modal.style.display = 'flex';
+}
+function closeCalendlyModal() {
+  modal.style.display = 'none';
+  calendlyIframe.src = '';
+}
+
+document.getElementById('openCalendly').addEventListener('click', openCalendlyModal);
+document.getElementById('closeCalendly').addEventListener('click', closeCalendlyModal);
+modal.addEventListener('click', e => { if (e.target === modal) closeCalendlyModal(); });
+
+// Detect Calendly booking completion event and auto-close after a short delay
+window.addEventListener('message', e => {
+  if (e.data && e.data.event && e.data.event === 'calendly.event_scheduled') {
+    setTimeout(() => closeCalendlyModal(), 2500);
+  }
+});
 </script>
 </body>
 </html>
