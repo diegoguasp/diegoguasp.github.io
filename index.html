@@ -4,10 +4,33 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Diego Guasp — Productor Musical & Asesor Legal Musical</title>
-<meta name="description" content="Diego Guasp — Productor musical, ingeniero y asesor legal musical.">
+<meta name="description" content="Diego Guasp — Productor musical, ingeniero y asesor legal musical. Guadalajara, México.">
+
+<!-- Open Graph / Social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://diegoguasp.com">
 <meta property="og:title" content="Diego Guasp — Productor Musical & Asesor Legal Musical">
-<meta property="og:description" content="Mi musica suena como una pelicula.">
-<meta property="og:url" content="https://diegoguasp.github.io">
+<meta property="og:description" content="Mi música suena como una película. Producción musical y asesoría legal artística desde Guadalajara, México.">
+<meta property="og:image" content="https://diegoguasp.com/Imagenes/Foto.JPG">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_MX">
+
+<!-- Twitter/X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Diego Guasp — Productor Musical & Asesor Legal Musical">
+<meta name="twitter:description" content="Mi música suena como una película.">
+<meta name="twitter:image" content="https://diegoguasp.com/Imagenes/Foto.JPG">
+
+<!-- Google Analytics 4 -->
+<!-- Reemplaza G-XXXXXXXXXX con tu Measurement ID de GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXXXX');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -502,7 +525,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
     <li><a href="#sobre-mi">Bio</a></li>
     <li><a href="#musica">Música</a></li>
     <li><a href="#servicios-legales">Servicios Legales</a></li>
-    <li><a href="#libreria">Librería</a></li>
+    <li style="display: none;"><a href="#libreria">Librería</a></li>
     <li><a href="#agenda-col" class="nav-cta">Agendar Asesoría</a></li>
   </ul>
 </nav>
@@ -757,7 +780,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 </section>
 
 <!-- LIBRERÍA DE SONIDOS -->
-<section class="sounds" id="libreria">
+<section class="sounds" id="libreria" style="display: none;">
   <div class="sounds-bg"></div>
   <div class="sounds-inner">
     <div class="sounds-value reveal">
@@ -800,7 +823,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
         <li><a href="#sobre-mi">Bio</a></li>
         <li><a href="#musica">Música</a></li>
         <li><a href="#servicios-legales">Servicios Legales</a></li>
-        <li><a href="#libreria">Librería</a></li>
+        <li style="display: none;"><a href="#libreria">Librería</a></li>
         <li><a href="#agenda-col">Agendar</a></li>
       </ul>
     </div>
@@ -838,6 +861,41 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 <script>
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 60); });
+
+// ─── GA4 Event Tracking ───
+function trackClick(eventName, label) {
+  if (typeof gtag !== 'undefined') {
+    gtag('event', eventName, { event_label: label });
+  }
+}
+
+// Agendar asesoría — todos los botones que abren Calendly
+document.querySelectorAll('[href="#agenda-col"], #openCalendly').forEach(el => {
+  el.addEventListener('click', () => trackClick('click_agendar', el.id || el.textContent.trim()));
+});
+
+// Plataformas musicales
+document.querySelectorAll('.platform-btn').forEach(el => {
+  el.addEventListener('click', () => trackClick('click_plataforma', el.textContent.trim()));
+});
+
+// IMDb
+document.querySelectorAll('a[href*="imdb.com"]').forEach(el => {
+  el.addEventListener('click', () => trackClick('click_imdb', 'IMDb'));
+});
+
+// Bandcamp
+document.querySelectorAll('a[href*="bandcamp.com"]').forEach(el => {
+  el.addEventListener('click', () => trackClick('click_bandcamp', el.textContent.trim()));
+});
+
+// Tracks individuales
+document.querySelectorAll('.track-link').forEach(el => {
+  el.addEventListener('click', () => {
+    const title = el.closest('.track')?.querySelector('.track-title')?.textContent || 'unknown';
+    trackClick('click_track', title);
+  });
+});
 
 // Hamburger menu
 const hamburger = document.getElementById('navHamburger');
