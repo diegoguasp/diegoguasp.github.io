@@ -83,7 +83,7 @@ section { padding: 7rem 3rem; scroll-margin-top: -7rem; }
 .track.touched { background: var(--bg2); }
 .track.touched::before { height: 100%; }
 .track-num   { font-family: var(--font-mono); font-size: 0.62rem; color: var(--muted); letter-spacing: 0.15em; margin-bottom: 1.25rem; }
-.track-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--cream); margin-bottom: 0.3rem; }
+.track-title { font-family: var(--font-display); font-size: 2.3rem; font-weight: 800; color: var(--cream); margin-bottom: 0.3rem; }
 .track-year  { font-family: var(--font-mono); font-size: 0.65rem; color: var(--blue); margin-bottom: 1rem; }
 .track-desc  { font-size: 0.85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1.5rem; }
 .track-genres { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem; }
