@@ -2,6 +2,49 @@
    Diego Guasp — main.js
    ───────────────────────────────────────── */
 
+// ─── Language Toggle ───
+const LANG_KEY = 'dg_lang';
+let currentLang = localStorage.getItem(LANG_KEY) || 'es';
+
+function applyLang(lang) {
+  currentLang = lang;
+  localStorage.setItem(LANG_KEY, lang);
+
+  // Update all translatable elements
+  document.querySelectorAll('[data-es][data-en]').forEach(el => {
+    const text = lang === 'en' ? el.dataset.en : el.dataset.es;
+    // Elements with innerHTML (those containing <br> or <em>)
+    if (text && (text.includes('<br>') || text.includes('<em>'))) {
+      el.innerHTML = text;
+    } else if (text) {
+      el.textContent = text;
+    }
+  });
+
+  // Update html lang attribute
+  document.documentElement.lang = lang === 'en' ? 'en' : 'es';
+
+  // Update toggle active state on both toggles
+  document.querySelectorAll('.lang-opt').forEach(opt => {
+    opt.classList.toggle('active', opt.dataset.lang === lang);
+  });
+
+  // Track in GA4
+  if (typeof gtag !== 'undefined') {
+    gtag('event', 'language_switch', { event_label: lang });
+  }
+}
+
+// Attach click to both toggles (desktop + mobile)
+document.querySelectorAll('.lang-toggle').forEach(toggle => {
+  toggle.addEventListener('click', () => {
+    applyLang(currentLang === 'es' ? 'en' : 'es');
+  });
+});
+
+// Init on load
+applyLang(currentLang);
+
 // ─── Navbar scroll ───
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {

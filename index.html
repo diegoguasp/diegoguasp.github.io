@@ -49,11 +49,23 @@
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="main-navigation">
-    <li><a href="#sobre-mi">Bio</a></li>
-    <li><a href="#musica">Música</a></li>
-    <li><a href="#servicios-legales">Servicios Legales</a></li>
-    <li><a href="#agenda-col" class="nav-cta">Agendar Asesoría</a></li>
+    <li><a href="#sobre-mi" data-es="Bio" data-en="Bio">Bio</a></li>
+    <li><a href="#musica" data-es="Música" data-en="Music">Música</a></li>
+    <li><a href="#servicios-legales" data-es="Servicios Legales" data-en="Legal Services">Servicios Legales</a></li>
+    <li class="lang-toggle-mobile">
+      <button class="lang-toggle" id="langToggleMobile" aria-label="Cambiar idioma">
+        <span class="lang-opt" data-lang="es">ES</span>
+        <span class="lang-sep">|</span>
+        <span class="lang-opt" data-lang="en">EN</span>
+      </button>
+    </li>
+    <li><a href="#agenda-col" class="nav-cta" data-es="Agendar Asesoría" data-en="Book a Session">Agendar Asesoría</a></li>
   </ul>
+  <button class="lang-toggle lang-toggle-desktop" id="langToggleDesktop" aria-label="Cambiar idioma">
+    <span class="lang-opt" data-lang="es">ES</span>
+    <span class="lang-sep">|</span>
+    <span class="lang-opt" data-lang="en">EN</span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -63,12 +75,12 @@
   <div class="hero-content">
     <h1 class="hero-title">
       <span class="name">Diego Guasp</span>
-      <span class="role">Productor Musical ·</span>
-      <span class="role">Asesor Legal Musical</span>
+      <span class="role" data-es="Productor Musical ·" data-en="Music Producer ·">Productor Musical ·</span>
+      <span class="role" data-es="Asesor Legal Musical" data-en="Music Legal Advisor">Asesor Legal Musical</span>
     </h1>
     <div class="hero-btns">
-      <a href="#musica" class="btn-blue">Escuchar música</a>
-      <a href="#agenda-col" class="btn-ghost">Agendar asesoría</a>
+      <a href="#musica" class="btn-blue" data-es="Escuchar música" data-en="Listen to music">Escuchar música</a>
+      <a href="#agenda-col" class="btn-ghost" data-es="Agendar asesoría" data-en="Book a session">Agendar asesoría</a>
     </div>
   </div>
   <div class="hero-visual">
@@ -84,8 +96,10 @@
 <section class="about" id="sobre-mi">
   <div class="about-inner">
     <div>
-      <div class="section-eyebrow reveal">Sobre mí</div>
-      <p class="section-title reveal">
+      <div class="section-eyebrow reveal" data-es="Sobre mí" data-en="About me">Sobre mí</div>
+      <p class="section-title reveal"
+        data-es="Diego Guasp es un productor musical, ingeniero en audio y diseñador sonoro de películas, originario de Guadalajara, México. Además, es asesor de artistas y productores musicales en todo lo relacionado con derechos de autor, regalias, contratos y marcas."
+        data-en="Diego Guasp is a music producer, audio engineer, and film sound designer from Guadalajara, Mexico. He also advises artists and music producers on all matters related to copyright, royalties, contracts, and trademarks.">
         Diego Guasp es un productor musical, ingeniero en audio y diseñador sonoro de películas, originario de Guadalajara, México.
         Además, es asesor de artistas y productores musicales en todo lo relacionado con derechos de autor, regalias, contratos y marcas.
       </p>
@@ -106,13 +120,13 @@
 <section class="music" id="musica">
   <div class="music-header">
     <div>
-      <div class="section-eyebrow reveal">Portafolio</div>
-      <h2 class="section-title reveal">Discografía</h2>
-      <p>Mi musica suena como una pelicula</p>
+      <div class="section-eyebrow reveal" data-es="Portafolio" data-en="Portfolio">Portafolio</div>
+      <h2 class="section-title reveal" data-es="Discografía" data-en="Discography">Discografía</h2>
+      <p data-es="Mi musica suena como una pelicula" data-en="My music sounds like a movie">Mi musica suena como una pelicula</p>
     </div>
     <div class="music-platforms reveal">
       <div class="platform-group">
-        <span class="platform-group-label">Comprar en:</span>
+        <span class="platform-group-label" data-es="Comprar en:" data-en="Buy on:">Comprar en:</span>
         <div class="platform-group-btns">
           <a href="https://diegoguasp.bandcamp.com" target="_blank" rel="noopener" class="platform-btn">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="3" fill="#1DA0C3"/><path d="M4.5 15.5l5.5-7h10l-5.5 7z" fill="white"/></svg>
@@ -121,7 +135,7 @@
         </div>
       </div>
       <div class="platform-group">
-        <span class="platform-group-label">Escuchar en:</span>
+        <span class="platform-group-label" data-es="Escuchar en:" data-en="Listen on:">Escuchar en:</span>
         <div class="platform-group-btns">
           <a href="https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ" target="_blank" rel="noopener" class="platform-btn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="12" fill="#1DB954"/><path d="M17.2 10.6c-2.9-1.7-7.6-1.9-10.3-1a.7.7 0 01-.9-.5.7.7 0 01.5-.9c3-.9 8.1-.7 11.3 1.2a.7.7 0 01.2 1 .7.7 0 01-.8.2zm-.1 2.7a.6.6 0 01-.8.2c-2.4-1.5-6.1-1.9-9-1.1a.6.6 0 01-.7-.4.6.6 0 01.4-.7c3.3-.9 7.3-.5 10 1.2a.6.6 0 01.1.8zm-.9 2.6a.5.5 0 01-.7.1c-2.1-1.3-4.8-1.6-7.9-.9a.5.5 0 01-.6-.4.5.5 0 01.4-.6c3.4-.7 6.4-.4 8.7 1a.5.5 0 01.1.8z" fill="white"/></svg>
@@ -148,39 +162,39 @@
     <div class="track">
       <div class="track-num">03 — 2025</div>
       <div class="track-title">Autum</div>
-      <div class="track-year">Álbum · Noviembre 2025 · Último release</div>
-      <div class="track-desc">Mucho piano y saxofon. El sonido actual de Diego Guasp.</div>
+      <div class="track-year" data-es="Álbum · Noviembre 2025 · Último release" data-en="Album · November 2025 · Latest release">Álbum · Noviembre 2025 · Último release</div>
+      <div class="track-desc" data-es="Mucho piano y saxofon. El sonido actual de Diego Guasp." data-en="Heavy piano and saxophone. Diego Guasp's current sound.">Mucho piano y saxofon. El sonido actual de Diego Guasp.</div>
       <div class="track-genres"><span class="track-genre">Soft Piano</span><span class="track-genre">RnB</span></div>
     </div>
     <div class="track">
       <div class="track-num">02 — 2025</div>
       <div class="track-title">グアスプ</div>
-      <div class="track-year">Álbum · Abril 2025</div>
-      <div class="track-desc">グアスプ que significa "Guasp", combina texturas electrónicas y percusiones muy variadas.</div>
+      <div class="track-year" data-es="Álbum · Abril 2025" data-en="Album · April 2025">Álbum · Abril 2025</div>
+      <div class="track-desc" data-es="グアスプ que significa &quot;Guasp&quot;, combina texturas electrónicas y percusiones muy variadas." data-en="グアスプ meaning &quot;Guasp&quot;, blends electronic textures with varied rhythmic elements.">グアスプ que significa "Guasp", combina texturas electrónicas y percusiones muy variadas.</div>
       <div class="track-genres"><span class="track-genre">Bossa Nova Jazz</span><span class="track-genre">Dream Pop</span></div>
     </div>
     <div class="track">
       <div class="track-num">01 — 2022</div>
       <div class="track-title">Break You</div>
-      <div class="track-year">Single · Enero 2022</div>
-      <div class="track-desc">Track instrumental producido para el scoring de un cortometraje. Atmosferas hechas con sintetizadores.</div>
+      <div class="track-year" data-es="Single · Enero 2022" data-en="Single · January 2022">Single · Enero 2022</div>
+      <div class="track-desc" data-es="Track instrumental producido para el scoring de un cortometraje. Atmosferas hechas con sintetizadores." data-en="Instrumental track produced for a short film score. Synth-driven atmospheres inspired by Coldplay.">Track instrumental producido para el scoring de un cortometraje. Atmosferas hechas con sintetizadores.</div>
       <div class="track-genres"><span class="track-genre">Ambient Pop</span><span class="track-genre">Cinematic</span></div>
     </div>
   </div>
 
   <!-- Diseño Sonoro -->
   <div class="sound-design reveal">
-    <h2 class="section-title" style="margin-top:3.5rem;">Diseño Sonoro</h2>
+    <h2 class="section-title" style="margin-top:3.5rem;" data-es="Diseño Sonoro" data-en="Sound Design">Diseño Sonoro</h2>
     <div class="sound-design-cols">
       <div class="sound-design-left">
-        <p class="sound-design-desc">Trabajo en diseño sonoro, scoring para cine y medios audiovisuales. Puedes ver mi filmografía completa en IMDb.</p>
-        <a href="https://m.imdb.com/name/nm13882269/" target="_blank" rel="noopener" class="platform-btn platform-btn--lg">
+        <p class="sound-design-desc" data-es="Trabajo en diseño sonoro, scoring para cine y medios audiovisuales. Puedes ver mi filmografía completa en IMDb." data-en="I work in sound design and scoring for film and audiovisual media. You can see my full filmography on IMDb.">Trabajo en diseño sonoro, scoring para cine y medios audiovisuales. Puedes ver mi filmografía completa en IMDb.</p>
+        <a href="https://m.imdb.com/name/nm13882269/" target="_blank" rel="noopener" class="platform-btn platform-btn--lg" data-es="Ver en IMDb" data-en="View on IMDb">
           <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect width="24" height="24" rx="4" fill="#F5C518"/><text x="3" y="17" font-family="Arial" font-weight="900" font-size="8.5" fill="#000000">IMDb</text></svg>
-          Ver en IMDb
+          <span data-es="Ver en IMDb" data-en="View on IMDb">Ver en IMDb</span>
         </a>
       </div>
       <div class="sound-design-right">
-        <p class="sound-design-video-label">Mezcla Trailers</p>
+        <p class="sound-design-video-label" data-es="Mezcla Trailers" data-en="Trailer Mix">Mezcla Trailers</p>
         <div class="video-embed">
           <iframe src="https://www.youtube.com/embed/2tfLSS6xUOE" title="Mezcla Trailers — Diego Guasp" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -196,38 +210,38 @@
   <div class="legal-agenda-cols reveal">
     <div class="legal-column-left">
       <div class="legal-agenda-top reveal">
-        <div class="section-eyebrow">Servicios Legales</div>
-        <h2 class="section-title">Tu arte,<br><em>protegido.</em></h2>
-        <p class="section-text">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
+        <div class="section-eyebrow" data-es="Servicios Legales" data-en="Legal Services">Servicios Legales</div>
+        <h2 class="section-title" data-es="Tu arte,<br><em>protegido.</em>" data-en="Your art,<br><em>protected.</em>">Tu arte,<br><em>protegido.</em></h2>
+        <p class="section-text" data-es="La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad." data-en="The creative industry is full of contracts and rights that can make all the difference. I help you navigate that world with clarity.">La industria creativa está llena de contratos y derechos que pueden hacer la diferencia. Te ayudo a navegar ese mundo con claridad.</p>
       </div>
       <div class="legal-box">
         <div class="legal-services-list">
           <div class="legal-service-item">
             <div class="legal-service-num">01</div>
             <div>
-              <div class="legal-service-name">Asesorías Legales</div>
-              <div class="legal-service-desc">Guío a artistas, bandas y músicos a entender dónde están parados legalmente y qué necesitan hacer según su situación particular. Cada caso es único y lo atiendo de forma personalizada.</div>
+              <div class="legal-service-name" data-es="Asesorías Legales" data-en="Legal Consulting">Asesorías Legales</div>
+              <div class="legal-service-desc" data-es="Guío a artistas, bandas y músicos a entender dónde están parados legalmente y qué necesitan hacer según su situación particular. Cada caso es único y lo atiendo de forma personalizada." data-en="I guide artists, bands, and musicians to understand their legal standing and what steps they need to take based on their specific situation. Every case is unique and I handle each one personally.">Guío a artistas, bandas y músicos a entender dónde están parados legalmente y qué necesitan hacer según su situación particular. Cada caso es único y lo atiendo de forma personalizada.</div>
             </div>
           </div>
           <div class="legal-service-item">
             <div class="legal-service-num">02</div>
             <div>
-              <div class="legal-service-name">Registro de Canciones y Fonogramas</div>
-              <div class="legal-service-desc">Llevo a cabo la protección legal de los derechos de autor de obras y grabaciones ante los organismos correspondientes.</div>
+              <div class="legal-service-name" data-es="Registro de Canciones y Fonogramas" data-en="Song & Phonogram Registration">Registro de Canciones y Fonogramas</div>
+              <div class="legal-service-desc" data-es="Llevo a cabo la protección legal de los derechos de autor de obras y grabaciones ante los organismos correspondientes." data-en="I handle the legal protection of copyright for compositions and recordings with the relevant authorities.">Llevo a cabo la protección legal de los derechos de autor de obras y grabaciones ante los organismos correspondientes.</div>
             </div>
           </div>
           <div class="legal-service-item">
             <div class="legal-service-num">03</div>
             <div>
-              <div class="legal-service-name">Afiliación a Sociedades de Gestión</div>
-              <div class="legal-service-desc">Apoyo a autores y compositores en el proceso de afiliación a las sociedades de gestión colectiva para que puedan cobrar todas las regalías posibles.</div>
+              <div class="legal-service-name" data-es="Afiliación a Sociedades de Gestión" data-en="Performing Rights Society Registration">Afiliación a Sociedades de Gestión</div>
+              <div class="legal-service-desc" data-es="Apoyo a autores y compositores en el proceso de afiliación a las sociedades de gestión colectiva para que puedan cobrar todas las regalías posibles." data-en="I support authors and composers through the process of joining collective management societies so they can collect all possible royalties.">Apoyo a autores y compositores en el proceso de afiliación a las sociedades de gestión colectiva para que puedan cobrar todas las regalías posibles.</div>
             </div>
           </div>
           <div class="legal-service-item">
             <div class="legal-service-num">04</div>
             <div>
-              <div class="legal-service-name">Registro de Marcas, Contratos y Licencias</div>
-              <div class="legal-service-desc">Registro marcas y redacto licencias de sincronización o cualquier contrato necesario en la industria musical.</div>
+              <div class="legal-service-name" data-es="Registro de Marcas, Contratos y Licencias" data-en="Trademark, Contracts & Licenses">Registro de Marcas, Contratos y Licencias</div>
+              <div class="legal-service-desc" data-es="Registro marcas y redacto licencias de sincronización o cualquier contrato necesario en la industria musical." data-en="I register trademarks and draft sync licenses or any other contract needed in the music industry.">Registro marcas y redacto licencias de sincronización o cualquier contrato necesario en la industria musical.</div>
             </div>
           </div>
         </div>
@@ -236,25 +250,25 @@
 
     <section class="agenda-col" id="agenda-col">
       <div class="agenda-header">
-        <div class="section-eyebrow">Agendar Asesoria</div>
+        <div class="section-eyebrow" data-es="Agendar Asesoria" data-en="Book a Session">Agendar Asesoria</div>
         <div class="agenda-intro">
-          <h2 class="section-title">Reserva tu<br><em>asesoría.</em></h2>
-          <p class="section-text">Selecciona el horario disponible que mejor se te acomode a través de Calendly.</p>
+          <h2 class="section-title" data-es="Reserva tu<br><em>asesoría.</em>" data-en="Book your<br><em>session.</em>">Reserva tu<br><em>asesoría.</em></h2>
+          <p class="section-text" data-es="Selecciona el horario disponible que mejor se te acomode a través de Calendly." data-en="Select the available time slot that works best for you through Calendly.">Selecciona el horario disponible que mejor se te acomode a través de Calendly.</p>
         </div>
       </div>
       <div class="calendly-wrap">
         <div class="calendly-icon">◷</div>
-        <h3>Calendario</h3>
-        <p>Recibirás confirmación y recordatorio automático por correo.</p>
-        <button type="button" id="openCalendly" class="btn-calendly">Reservar asesoría →</button>
+        <h3 data-es="Calendario" data-en="Calendar">Calendario</h3>
+        <p data-es="Recibirás confirmación y recordatorio automático por correo." data-en="You'll receive automatic confirmation and reminder by email.">Recibirás confirmación y recordatorio automático por correo.</p>
+        <button type="button" id="openCalendly" class="btn-calendly" data-es="Reservar asesoría →" data-en="Book session →">Reservar asesoría →</button>
         <div class="agenda-features">
           <div class="agenda-feature">
-            <div class="agenda-feature-label">Modalidad</div>
-            <div class="agenda-feature-val">Video llamada o presencial</div>
+            <div class="agenda-feature-label" data-es="Modalidad" data-en="Format">Modalidad</div>
+            <div class="agenda-feature-val" data-es="Video llamada o presencial" data-en="Video call or in person">Video llamada o presencial</div>
           </div>
           <div class="agenda-feature">
-            <div class="agenda-feature-label">Zona horaria</div>
-            <div class="agenda-feature-val">Centro de México (GMT-6)</div>
+            <div class="agenda-feature-label" data-es="Zona horaria" data-en="Timezone">Zona horaria</div>
+            <div class="agenda-feature-val" data-es="Centro de México (GMT-6)" data-en="Mexico Central Time (GMT-6)">Centro de México (GMT-6)</div>
           </div>
         </div>
       </div>
@@ -274,16 +288,16 @@
       <p>Productor Musical · Asesor Legal Musical</p>
     </div>
     <div class="footer-col">
-      <h4>Navegación</h4>
+      <h4 data-es="Navegación" data-en="Navigation">Navegación</h4>
       <ul>
-        <li><a href="#sobre-mi">Bio</a></li>
-        <li><a href="#musica">Música</a></li>
-        <li><a href="#servicios-legales">Servicios Legales</a></li>
-        <li><a href="#agenda-col">Agendar</a></li>
+        <li><a href="#sobre-mi" data-es="Bio" data-en="Bio">Bio</a></li>
+        <li><a href="#musica" data-es="Música" data-en="Music">Música</a></li>
+        <li><a href="#servicios-legales" data-es="Servicios Legales" data-en="Legal Services">Servicios Legales</a></li>
+        <li><a href="#agenda-col" data-es="Agendar" data-en="Book">Agendar</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Música</h4>
+      <h4 data-es="Música" data-en="Music">Música</h4>
       <ul>
         <li><a href="https://diegoguasp.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a></li>
         <li><a href="https://open.spotify.com/artist/3UPe8YhRM7mn77mCJE94HJ" target="_blank" rel="noopener">Spotify</a></li>
@@ -294,7 +308,7 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">© 2026 Diego Guasp — Todos los derechos reservados</span>
+    <span class="footer-copy" data-es="© 2026 Diego Guasp — Todos los derechos reservados" data-en="© 2026 Diego Guasp — All rights reserved">© 2026 Diego Guasp — Todos los derechos reservados</span>
     <div class="footer-socials">
       <a href="https://instagram.com/diego.guasp" target="_blank" rel="noopener" class="footer-social">Instagram</a>
       <a href="https://tiktok.com/@diegoguasp" target="_blank" rel="noopener" class="footer-social">TikTok</a>
@@ -306,7 +320,7 @@
 <div id="calendlyModal" style="display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.45);backdrop-filter:blur(2px);align-items:center;justify-content:center;padding:1rem;">
   <div style="width:min(900px,100%);max-height:90vh;background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;">
     <div style="display:flex;justify-content:space-between;align-items:center;padding:0.8rem 1rem;border-bottom:1px solid var(--border);">
-      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;color:var(--cream);font-weight:700;">Reservar asesoría</h3>
+      <h3 style="font-family:'Syne',sans-serif;font-size:1rem;color:var(--cream);font-weight:700;" data-es="Reservar asesoría" data-en="Book a session">Reservar asesoría</h3>
       <button id="closeCalendly" style="background:transparent;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer;line-height:1;">×</button>
     </div>
     <div><iframe id="calendlyIframe" src="" title="Calendly" allowfullscreen style="width:100%;height:70vh;border:0;"></iframe></div>

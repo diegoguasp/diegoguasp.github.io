@@ -163,6 +163,21 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
 .reveal         { opacity: 0; transform: translateY(18px); transition: opacity 0.65s ease, transform 0.65s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
+/* LANG TOGGLE */
+.lang-toggle {
+  display: flex; align-items: center; gap: 0.3rem;
+  background: transparent; border: 1px solid var(--border);
+  border-radius: 3px; padding: 0.3rem 0.6rem; cursor: pointer;
+  font-family: var(--font-mono); font-size: 0.65rem; letter-spacing: 0.1em;
+  transition: border-color 0.2s;
+}
+.lang-toggle:hover { border-color: var(--blue); }
+.lang-opt { color: var(--muted); transition: color 0.2s; }
+.lang-opt.active { color: var(--blue); font-weight: 700; }
+.lang-sep { color: var(--border); font-size: 0.7rem; }
+.lang-toggle-mobile { display: none; }
+.lang-toggle-desktop { margin-left: 0.5rem; }
+
 /* HAMBURGER */
 .nav-hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; width: 36px; height: 36px; cursor: pointer; background: transparent; border: none; padding: 4px; flex-shrink: 0; }
 .nav-hamburger span { display: block; width: 22px; height: 2px; background: var(--cream); border-radius: 2px; transition: transform 0.25s, opacity 0.2s; }
@@ -177,6 +192,9 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   .nav-hamburger { display: flex; }
   .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; background: rgba(198,200,214,0.97); backdrop-filter: blur(20px); padding: 5rem 2rem 2rem; z-index: 99; border-bottom: 1px solid var(--border); }
   .nav-links.open { display: flex; }
+  .lang-toggle-desktop { display: none; }
+  .lang-toggle-mobile { display: block; border-bottom: none !important; padding: 0.9rem 0; }
+  .lang-toggle-mobile .lang-toggle { border: none; padding: 0; font-size: 0.75rem; }
   .nav-links li { width: 100%; border-bottom: 1px solid var(--border); }
   .nav-links li:last-child { border-bottom: none; margin-top: 1rem; }
   .nav-links a { display: block; padding: 0.9rem 0; font-size: 0.75rem; color: var(--subtle); }
