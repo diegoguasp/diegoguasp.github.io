@@ -29,7 +29,9 @@ nav.scrolled { background: rgba(198,200,214,0.96); backdrop-filter: blur(20px); 
 .nav-logo { display: flex; align-items: center; gap: 0.65rem; font-family: var(--font-display); font-size: 1.15rem; font-weight: 800; letter-spacing: 0.01em; color: var(--cream); text-decoration: none; }
 .nav-logo img { width: 32px; height: 32px; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
 .nav-logo span { color: var(--blue); }
-.nav-links { display: flex; gap: 2.5rem; list-style: none; align-items: center; justify-content: flex-end; flex-wrap: wrap; }
+/* nav-right keeps links + toggle together, flush right */
+.nav-right { display: flex; align-items: center; gap: 1rem; }
+.nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
 .nav-links a { color: var(--muted); text-decoration: none; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.2s; }
 .nav-links a:hover { color: var(--blue); }
 .nav-links li { min-width: fit-content; }
@@ -194,7 +196,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   .nav-links a:hover { color: var(--blue); }
   .nav-cta { display: inline-block !important; padding: 0.65rem 1.4rem !important; width: fit-content; }
   /* Lang toggle mobile: below CTA, right-aligned */
-  .lang-toggle-mobile-li { display: flex !important; justify-content: flex-end; padding: 0.75rem 0; border-bottom: none !important; border-top: 1px solid var(--border); margin-top: 0.5rem; }
+  .lang-toggle-mobile-li { display: flex !important; justify-content: flex-end; padding: 0.75rem 0; border-bottom: none !important; margin-top: 0.5rem; }
   .lang-toggle-mobile-li .lang-toggle { border: 1px solid var(--border); }
   .nav-overlay { display: none; position: fixed; inset: 0; z-index: 98; background: rgba(26,28,46,0.35); }
   .nav-overlay.open { display: block; }
