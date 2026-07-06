@@ -183,7 +183,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   nav { padding: 1rem 1.5rem; flex-wrap: nowrap; justify-content: space-between; }
   nav.scrolled { padding: 0.8rem 1.5rem; }
   .nav-hamburger { display: flex; margin-left: auto; }
-  .nav-right { display: contents; }
+  .nav-right { position: static; }
   .lang-toggle-desktop { display: none; }
   .nav-links { display: none; flex-direction: column; gap: 0; position: fixed; top: 0; left: 0; right: 0; background: rgba(198,200,214,0.97); backdrop-filter: blur(20px); padding: 5rem 2rem 2rem; z-index: 99; border-bottom: 1px solid var(--border); }
   .nav-links.open { display: flex; }
