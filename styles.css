@@ -200,7 +200,7 @@ footer { background: var(--bg2); border-top: 1px solid var(--border); padding: 4
   .nav-links a { display: block; padding: 0.9rem 0; font-size: 0.75rem; color: var(--subtle); }
   .nav-links a:hover { color: var(--blue); }
   .nav-cta { display: inline-block !important; padding: 0.65rem 1.4rem !important; width: fit-content; }
-  .lang-toggle-mobile-li { display: flex !important; justify-content: flex-end; padding: 0.75rem 0; border-bottom: none !important; border-top: 1px solid var(--border); margin-top: 0.5rem; }
+  .lang-toggle-mobile-li { display: flex !important; justify-content: flex-end; padding: 0.75rem 0; border-bottom: none !important; margin-top: 0.5rem; }
   .lang-toggle-mobile-li .lang-toggle { border: 1px solid var(--border); }
   .nav-overlay { display: none; position: fixed; inset: 0; z-index: 98; background: rgba(30,20,10,0.35); }
   .nav-overlay.open { display: block; }
