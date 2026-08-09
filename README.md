@@ -2,4 +2,4 @@
 
 ### Landing Page para Diego Guasp
 
-#### https://diegoguasp.github.io/
+#### https://diegoguasp.com
