@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────
    Diego Guasp — release.js
-   Sección temporal "Próximo lanzamiento"
+   Diálogo temporal "Próximo lanzamiento"
 
    CÓMO USARLO
    1. Edita SOLO el objeto RELEASE de abajo.
@@ -95,9 +95,15 @@ const RELEASE = {
       <span class="release-dot">·</span>
       <span data-es="${esc(dateEs)}" data-en="${esc(dateEn)}">${esc(dateEs)}</span>
     </p>
-    <h2 class="section-title release-title">${esc(RELEASE.title)}</h2>
+    <h2 class="section-title release-title" id="release-dialog-title">${esc(RELEASE.title)}</h2>
     ${RELEASE.artist ? `<p class="release-artist">${esc(RELEASE.artist)}</p>` : ''}
     <p class="release-blurb" data-es="${esc(RELEASE.blurb.es)}" data-en="${esc(RELEASE.blurb.en)}">${esc(RELEASE.blurb.es)}</p>`;
+
+  const closeButton = () => `
+    <button class="release-close" type="button" data-dialog-close autofocus>
+      <span aria-hidden="true">×</span>
+      <span class="release-close-label" data-es="Cerrar lanzamiento" data-en="Close release">Cerrar lanzamiento</span>
+    </button>`;
 
   function renderPresave() {
     const hasUrl = !!RELEASE.presaveUrl;
@@ -109,6 +115,7 @@ const RELEASE = {
       : '';
 
     section.innerHTML = `
+      ${closeButton()}
       <div class="release-inner">
         ${coverHtml()}
         <div class="release-info">
@@ -138,6 +145,7 @@ const RELEASE = {
         </a>`).join('');
 
     section.innerHTML = `
+      ${closeButton()}
       <div class="release-inner">
         ${coverHtml()}
         <div class="release-info">
@@ -190,7 +198,12 @@ const RELEASE = {
 
   // Seguimiento en GA4 (usa trackClick de main.js)
   section.addEventListener('click', e => {
-    const el = e.target.closest('[data-track]');
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.closest('[data-dialog-close]') || target === section) {
+      section.close();
+    }
+    const el = target.closest('[data-track]');
     if (!el || typeof trackClick !== 'function') return;
     trackClick(el.dataset.track, el.dataset.label || RELEASE.title);
   });
@@ -204,4 +217,5 @@ const RELEASE = {
     renderLive();
   }
   afterRender();
+  section.showModal();
 })();
