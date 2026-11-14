@@ -1,15 +1,17 @@
 /* ─────────────────────────────────────────
    Diego Guasp — release.js
-   Diálogo temporal "Próximo lanzamiento"
+   Ventana emergente temporal "Próximo lanzamiento"
 
    CÓMO USARLO
    1. Edita SOLO el objeto RELEASE de abajo.
    2. Pon active: true cuando quieras mostrarla.
-   3. Antes de la fecha → muestra cuenta regresiva + "Pre-guardar".
-      Desde la fecha → cambia sola a "Escuchar ahora".
-   4. Cuando el release ya haya salido, agrégalo a la
+   3. Antes de la fecha → cuenta regresiva + "Pre-guardar".
+      Desde la fecha → cambia sola a "Ya disponible".
+   4. Al cerrar la ventana queda un botón flotante en la
+      esquina inferior derecha para volver a abrirla.
+   5. Cuando el release ya haya salido, agrégalo a la
       Discografía en index.html y pon active: false.
-   5. Para el siguiente release, solo cambia los datos.
+   6. Para el siguiente release, solo cambia los datos.
 
    VISTA PREVIA (sin publicarla): abre el sitio con
    ?preview=release al final de la URL.
@@ -17,6 +19,7 @@
 
 const RELEASE = {
   active: false,                      // true = visible para todos
+  autoOpen: true,                     // true = se abre sola al entrar; false = solo aparece el botón flotante
 
   title: 'Título del release',
   artist: '',                         // opcional, ej. 'con Nombre de la artista'
@@ -54,6 +57,7 @@ const RELEASE = {
   const preview  = params.get('preview') === 'release';
   const section  = document.getElementById('proximo-lanzamiento');
   if (!section || !(RELEASE.active || preview)) return;
+  if (typeof section.showModal !== 'function') return; // navegador sin soporte de <dialog>
 
   const releaseTime = new Date(RELEASE.date).getTime();
   if (Number.isNaN(releaseTime)) return;
@@ -100,10 +104,17 @@ const RELEASE = {
     <p class="release-blurb" data-es="${esc(RELEASE.blurb.es)}" data-en="${esc(RELEASE.blurb.en)}">${esc(RELEASE.blurb.es)}</p>`;
 
   const closeButton = () => `
-    <button class="release-close" type="button" data-dialog-close autofocus>
+    <button class="release-close" type="button" data-dialog-close>
       <span aria-hidden="true">×</span>
       <span class="release-close-label" data-es="Cerrar lanzamiento" data-en="Close release">Cerrar lanzamiento</span>
     </button>`;
+
+  // Estructura del diálogo: barra fija con la X + cuerpo con scroll
+  const shell = inner => `
+    <div class="release-bar">${closeButton()}</div>
+    <div class="release-body">
+      <div class="release-inner">${inner}</div>
+    </div>`;
 
   function renderPresave() {
     const hasUrl = !!RELEASE.presaveUrl;
@@ -114,9 +125,7 @@ const RELEASE = {
       ? `<a class="btn-ghost release-cta-2" href="${esc(RELEASE.preorderUrl)}" target="_blank" rel="noopener" data-track="click_preorder">${t('Pre-order en Bandcamp', 'Pre-order on Bandcamp')}</a>`
       : '';
 
-    section.innerHTML = `
-      ${closeButton()}
-      <div class="release-inner">
+    section.innerHTML = shell(`
         ${coverHtml()}
         <div class="release-info">
           <div class="section-eyebrow">${t('Próximo lanzamiento', 'Upcoming release')}</div>
@@ -132,8 +141,7 @@ const RELEASE = {
             'Pre-guarda y se agregará a tu biblioteca el día del lanzamiento.',
             'Pre-save it and it will be added to your library on release day.'
           )}</p>
-        </div>
-      </div>`;
+        </div>`);
   }
 
   function renderLive() {
@@ -144,9 +152,7 @@ const RELEASE = {
           ${ICONS[k]}${NAMES[k]}
         </a>`).join('');
 
-    section.innerHTML = `
-      ${closeButton()}
-      <div class="release-inner">
+    section.innerHTML = shell(`
         ${coverHtml()}
         <div class="release-info">
           <div class="section-eyebrow">${t('Ya disponible', 'Out now')}</div>
@@ -154,10 +160,80 @@ const RELEASE = {
           <div class="release-actions release-actions--platforms">
             ${buttons || `<span class="release-note">${t('Pronto los links en cada plataforma.', 'Platform links coming soon.')}</span>`}
           </div>
-        </div>
-      </div>`;
+        </div>`);
   }
 
+  // ─── Botón flotante (queda al cerrar la ventana) ───
+  const launcher = document.createElement('button');
+  launcher.type = 'button';
+  launcher.className = 'release-launcher';
+  launcher.hidden = true;
+  launcher.setAttribute('aria-haspopup', 'dialog');
+  document.body.appendChild(launcher);
+
+  function renderLauncher(live) {
+    launcher.innerHTML = `
+      <span class="rl-thumb">
+        <img src="${esc(RELEASE.cover)}" alt="">
+        <span class="rl-thumb-fallback" aria-hidden="true">${esc(String(RELEASE.title).charAt(0))}</span>
+      </span>
+      <span class="rl-text">
+        <span class="rl-label">${live ? t('Ya disponible', 'Out now') : t('Pre-guardar', 'Pre-save')}</span>
+        <span class="rl-title">${esc(RELEASE.title)}</span>
+      </span>
+      <span class="rl-dot" aria-hidden="true"></span>`;
+  }
+
+  // ─── Abrir / cerrar ───
+  const root = document.documentElement;
+
+  function openDialog() {
+    if (section.open) return;
+    section.hidden = false;
+    root.classList.add('release-open');   // bloquea el scroll de la página detrás
+    launcher.hidden = true;
+    section.showModal();
+    section.scrollTop = 0;
+    section.focus({ preventScroll: true }); // el foco va a la ventana, no a la X
+  }
+
+  // Se dispara con la X, ESC o clic en el fondo
+  section.addEventListener('close', () => {
+    root.classList.remove('release-open');
+    launcher.hidden = false;
+  });
+
+  launcher.addEventListener('click', () => {
+    if (typeof trackClick === 'function') trackClick('release_reopen', RELEASE.title);
+    openDialog();
+  });
+
+  // ─── Clic: cerrar solo si fue en el fondo oscuro real ───
+  const outsideBox = e => {
+    const r = section.getBoundingClientRect();
+    return e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+  };
+  let downOnBackdrop = false;
+  section.addEventListener('pointerdown', e => {
+    downOnBackdrop = e.target === section && outsideBox(e);
+  });
+
+  // Seguimiento en GA4 (usa trackClick de main.js)
+  section.addEventListener('click', e => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    const onBackdrop = target === section && downOnBackdrop && outsideBox(e);
+    downOnBackdrop = false;
+    if (target.closest('[data-dialog-close]') || onBackdrop) {
+      section.close();
+      return;
+    }
+    const el = target.closest('[data-track]');
+    if (!el || typeof trackClick !== 'function') return;
+    trackClick(el.dataset.track, el.dataset.label || RELEASE.title);
+  });
+
+  // ─── Cuenta regresiva ───
   let timer = null;
   const pad = n => String(n).padStart(2, '0');
 
@@ -166,6 +242,7 @@ const RELEASE = {
     if (diff <= 0) {
       clearInterval(timer);
       renderLive();
+      renderLauncher(true);
       afterRender();
       return;
     }
@@ -177,45 +254,46 @@ const RELEASE = {
     set('d', pad(d)); set('h', pad(h)); set('m', pad(m)); set('s', pad(s));
   }
 
-  function watchCover() {
-    // Si la portada no carga, muestra el título como respaldo
-    const img = section.querySelector('.release-cover img');
-    if (!img) return;
-    const fallback = () => { img.remove(); section.querySelector('.release-cover')?.classList.add('no-img'); };
+  // Si una imagen no carga, muestra el título/inicial como respaldo
+  function watchImg(img, box) {
+    if (!img || !box) return;
+    const fallback = () => { img.remove(); box.classList.add('no-img'); };
     img.addEventListener('error', fallback, { once: true });
     if (img.complete && img.naturalWidth === 0) fallback();
   }
 
-  function afterRender() {
-    watchCover();
-    // Traduce solo los textos recién creados al idioma activo
-    // (sin volver a llamar applyLang, para no duplicar el evento de GA4)
+  // Traduce solo los textos recién creados al idioma activo
+  // (sin volver a llamar applyLang, para no duplicar el evento de GA4)
+  function translate(node) {
     const lang = (typeof currentLang !== 'undefined') ? currentLang : 'es';
-    section.querySelectorAll('[data-es][data-en]').forEach(el => {
+    node.querySelectorAll('[data-es][data-en]').forEach(el => {
       el.textContent = lang === 'en' ? el.dataset.en : el.dataset.es;
     });
   }
 
-  // Seguimiento en GA4 (usa trackClick de main.js)
-  section.addEventListener('click', e => {
-    const target = e.target;
-    if (!(target instanceof Element)) return;
-    if (target.closest('[data-dialog-close]') || target === section) {
-      section.close();
-    }
-    const el = target.closest('[data-track]');
-    if (!el || typeof trackClick !== 'function') return;
-    trackClick(el.dataset.track, el.dataset.label || RELEASE.title);
-  });
+  function afterRender() {
+    watchImg(section.querySelector('.release-cover img'), section.querySelector('.release-cover'));
+    watchImg(launcher.querySelector('.rl-thumb img'), launcher.querySelector('.rl-thumb'));
+    translate(section);
+    translate(launcher);
+  }
 
-  section.hidden = false;
-  if (releaseTime > Date.now()) {
+  // ─── Arranque ───
+  const isLive = releaseTime <= Date.now();
+  renderLauncher(isLive);
+  if (isLive) {
+    renderLive();
+  } else {
     renderPresave();
     tick();
     timer = setInterval(tick, 1000);
-  } else {
-    renderLive();
   }
   afterRender();
-  section.showModal();
+
+  section.setAttribute('tabindex', '-1');
+  if (RELEASE.autoOpen === false) {
+    launcher.hidden = false;
+  } else {
+    openDialog();
+  }
 })();

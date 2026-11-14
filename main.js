@@ -77,7 +77,7 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 // ─── Calendly modal ───
 const modal          = document.getElementById('calendlyModal');
 const calendlyIframe = document.getElementById('calendlyIframe');
-const CALENDLY_URL   = 'https://calendly.com/diegoguasp/asesoria-legal?embed_domain=diegoguasp.github.io&embed_type=Inline';
+const CALENDLY_URL   = 'https://calendly.com/diegoguasp/asesoria-legal?embed_domain=diegoguasp.com&embed_type=Inline';
 
 function openCalendlyModal() {
   calendlyIframe.src = '';
