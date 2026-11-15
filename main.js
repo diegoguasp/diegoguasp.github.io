@@ -93,9 +93,19 @@ document.getElementById('openCalendly').addEventListener('click', openCalendlyMo
 document.getElementById('closeCalendly').addEventListener('click', closeCalendlyModal);
 modal.addEventListener('click', e => { if (e.target === modal) closeCalendlyModal(); });
 
-// Auto-close on booking completion
+// Reserva completada en Calendly: avisa a GA4 y cierra la ventana
+const isCalendlyOrigin = origin => {
+  try {
+    const h = new URL(origin).hostname;
+    return h === 'calendly.com' || h.endsWith('.calendly.com');
+  } catch { return false; }
+};
 window.addEventListener('message', e => {
-  if (e.data?.event === 'calendly.event_scheduled') setTimeout(closeCalendlyModal, 2500);
+  if (!isCalendlyOrigin(e.origin)) return;               // ignora mensajes que no vengan de Calendly
+  if (e.data?.event === 'calendly.event_scheduled') {
+    trackClick('generate_lead', 'calendly');             // cliente potencial generado
+    setTimeout(closeCalendlyModal, 2500);
+  }
 });
 
 // ─── GA4 Event Tracking ───
