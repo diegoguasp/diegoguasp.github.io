@@ -110,7 +110,7 @@ section { padding: 7rem 3rem; scroll-margin-top: -7rem; }
 .platform-group:first-child { padding-left: 0; }
 .platform-group + .platform-group { border-left: 1px solid var(--border); }
 .platform-group-label { font-family: var(--font-mono); font-size: 0.58rem; color: var(--muted); letter-spacing: 0.15em; text-transform: uppercase; }
-.platform-group-btns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.5rem; }
+.platform-group-btns { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
 .platform-group-btns:has(> .platform-btn:only-child) { grid-template-columns: 1fr; }
 .platform-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1rem; border: 1px solid var(--border); border-radius: 3px; background: var(--bg3); text-decoration: none; font-family: var(--font-mono); font-size: 0.78rem; color: var(--subtle); letter-spacing: 0.05em; transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.15s; }
 .platform-btn:hover { border-color: var(--blue); color: var(--blue); background: var(--bg2); transform: translateY(-1px); }
